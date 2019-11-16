@@ -1,7 +1,17 @@
-.jumbotron{
+.panel{
     text-align: center;
     margin: auto;
-    width: 25rem;
-    height: 40rem;
-    border-radius: 0.5rem;
+    width: 30%;
+    height: 60%;
+    border-radius: 1rem;
+}
+.home{
+    text-align: center;
+    height: 100%;
+    width: 100%;
+    padding-top: 3rem;
+    /* display: inline; */
+}
+.display-4{
+    margin-bottom: 2rem;
 }
