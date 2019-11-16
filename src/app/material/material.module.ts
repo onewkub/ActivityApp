@@ -36,7 +36,7 @@ import {
 
 @NgModule({
   declarations: [],
-  imports: [
+  exports: [
     CommonModule,
     MatCheckboxModule,
     MatCheckboxModule,

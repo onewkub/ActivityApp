@@ -7,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomepageComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+    document.body.style.background = 'rgb(140, 140, 140)';
+   }
 
   ngOnInit() {
   }
