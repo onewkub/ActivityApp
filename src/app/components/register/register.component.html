@@ -1,1 +1,26 @@
-<p>register works!</p>
+<h1 class="display-4" style="font-size: 2rem; font-weight: bold;">register</h1>
+<form class="d-flex flex-column justify-content-center">
+    <mat-form-field>
+        <input matInput type="text" placeholder="email">
+    </mat-form-field>
+    <div class="d-flex flex-row justify-content-left">
+        <mat-form-field>
+            <input matInput type="text" placeholder="firstname">
+        </mat-form-field>
+        <div class="col-1"></div>
+        <mat-form-field>
+            <input matInput type="text" placeholder="lastname">
+        </mat-form-field>
+    </div>
+    <mat-form-field>
+        <input matInput type="password" placeholder="password">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput type="password" placeholder="confirm-password">
+    </mat-form-field>
+</form>
+<div class="d-flex flex-row justify-content-center">
+    <button mat-raised-button color="primary">register</button>
+    <div class="col-1"></div>
+    <button mat-raised-button [routerLink]="['/']" >login</button>
+</div>
