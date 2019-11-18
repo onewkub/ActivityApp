@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl : "www.mywebapi.test"
+  apiUrl : "http://api.activity.test"
 };
 
 /*

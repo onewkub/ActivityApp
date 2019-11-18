@@ -21,9 +21,6 @@
     <mat-form-field>
         <input matInput formControlName="password_confirmation" type="password" placeholder="confirm-password">
     </mat-form-field>
+    <button mat-raised-button color="primary" [disabled]="registerForm.invalid" (click)="onRegister()" style="margin-bottom: 0.5rem;">register</button>
 </form>
-<div class="d-flex flex-row justify-content-center">
-    <button mat-raised-button color="primary" (click)="onRegister()">register</button>
-    <div class="col-1"></div>
-    <button mat-raised-button [routerLink]="['/']">login</button>
-</div>
+<a [routerLink]="['/']">login</a>

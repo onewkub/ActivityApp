@@ -9,23 +9,35 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
+  currentUser: any;
+  handleError: any;
   constructor(
-    public formBuilder : FormBuilder,
-    public authService : AuthService
-    ) {
-      this.loginForm = formBuilder.group(
-        {
-          email :[''],
-          password : ['']
-        }
-      )
-     }
+    public formBuilder: FormBuilder,
+    public authService: AuthService
+  ) {
+    this.loginForm = formBuilder.group(
+      {
+        email: [''],
+        password: ['']
+      }
+    )
+  }
 
   ngOnInit() {
   }
 
-  onLogin(){
-    console.log(this.loginForm.value);
-    this.authService.tryLogin(this.loginForm);
+  async onLogin() {
+    await this.authService.tryLogin(this.loginForm.value)
+    .then(
+      res => {
+        this.currentUser = res['data'];
+        console.log(this.currentUser);
+
+      },
+      error =>{
+        this.handleError = error;
+        console.log(this.handleError);
+      }
+    );
   }
 }

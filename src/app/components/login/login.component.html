@@ -8,9 +8,6 @@
     <mat-form-field>
         <input matInput formControlName="password" type="password" placeholder="password">
     </mat-form-field>
+    <button mat-raised-button color="primary"(click)="onLogin()" style="margin-bottom: 0.5rem;">login</button>
 </form>
-<div class="d-flex flex-row justify-content-center">
-    <button mat-raised-button color="primary"(click)="onLogin()">login</button>
-    <div class="col-1"></div>
-    <button mat-raised-button [routerLink]="['/register']">register</button>
-</div>
+<a [routerLink]="['/register']">register</a>

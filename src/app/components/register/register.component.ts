@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
+import { PassMathcer } from "./validator/pass-mathcer.validator";
 
 @Component({
   selector: 'app-register',
@@ -15,19 +16,22 @@ export class RegisterComponent implements OnInit {
     public authService: AuthService
   ) {
     this.registerForm = formBuilder.group({
-      email : [''],
-      studentID : [''],
-      fname: [''], lname: [''],
-      password: [''],
-      password_confirmation: ['']
-
-    });
+      email : ['', [Validators.required, Validators.email]],
+      studentID : ['', [Validators.required]],
+      fname: ['', [Validators.required]], lname: ['', [Validators.required]],
+      password: ['', [Validators.required]],
+      password_confirmation: ['', [Validators.required]]
+    }
+    );
    }
 
   ngOnInit() {
   }
 
   onRegister(){
-    console.log(this.registerForm.value);
+    this.authService.tryRegister(this.registerForm.value).then(
+      res => {console.log(res)},
+      error => {console.log(error)}
+    )
   }
 }
