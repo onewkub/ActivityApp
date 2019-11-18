@@ -4,11 +4,7 @@
 
 export const environment = {
   production: false,
-<<<<<<< HEAD
-  database_api: "http://api.activity.test/"
-=======
   apiUrl : "www.mywebapi.test"
->>>>>>> 249b9d4f14163c9a32b6be3a89ce9390531a837c
 };
 
 /*
