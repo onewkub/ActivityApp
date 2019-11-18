@@ -2,15 +2,15 @@
 <mat-icon>account_circle</mat-icon>
 <form [formGroup]="loginForm" class="d-flex flex-column justify-content-center">
     <mat-form-field>
-        <input formControlName="email" matInput type="text" placeholder="email">
+        <input matInput formControlName="email" type="text" placeholder="email">
     </mat-form-field>
 
     <mat-form-field>
-        <input formControlName="password" matInput type="password" placeholder="password">
+        <input matInput formControlName="password" type="password" placeholder="password">
     </mat-form-field>
 </form>
 <div class="d-flex flex-row justify-content-center">
-    <button mat-raised-button color="primary" (click) = "onLogin()">login</button>
+    <button mat-raised-button color="primary"(click)="onLogin()">login</button>
     <div class="col-1"></div>
     <button mat-raised-button [routerLink]="['/register']">register</button>
 </div>
