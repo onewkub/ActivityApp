@@ -1,26 +1,29 @@
 <h1 class="display-4" style="font-size: 2rem; font-weight: bold;">register</h1>
-<form class="d-flex flex-column justify-content-center">
+<form [formGroup]="registerForm" class="d-flex flex-column justify-content-center">
     <mat-form-field>
-        <input matInput type="text" placeholder="email">
+        <input matInput type="text" placeholder="email" formControlName="email">
+    </mat-form-field>
+    <mat-form-field>
+            <input matInput type="text" placeholder="studentID" formControlName="studentID">
     </mat-form-field>
     <div class="d-flex flex-row justify-content-left">
         <mat-form-field>
-            <input matInput type="text" placeholder="firstname">
+            <input matInput type="text" placeholder="firstname" formControlName="fname">
         </mat-form-field>
         <div class="col-1"></div>
         <mat-form-field>
-            <input matInput type="text" placeholder="lastname">
+            <input matInput type="text" placeholder="lastname" formControlName="lname">
         </mat-form-field>
     </div>
     <mat-form-field>
-        <input matInput type="password" placeholder="password">
+        <input matInput type="password" placeholder="password" formControlName="password">
     </mat-form-field>
     <mat-form-field>
-        <input matInput type="password" placeholder="confirm-password">
+        <input matInput type="password" placeholder="confirm-password" formControlName="password_confirmation">
     </mat-form-field>
 </form>
 <div class="d-flex flex-row justify-content-center">
-    <button mat-raised-button color="primary">register</button>
+    <button mat-raised-button color="primary" (click) = "onRegister()">register</button>
     <div class="col-1"></div>
     <button mat-raised-button [routerLink]="['/']" >login</button>
 </div>

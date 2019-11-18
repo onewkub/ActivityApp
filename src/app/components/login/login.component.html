@@ -1,16 +1,16 @@
 <h1 class="display-4" style="font-size: 2rem; font-weight: bold;">login</h1>
 <mat-icon>account_circle</mat-icon>
-<form class="d-flex flex-column justify-content-center">
+<form [formGroup]="loginForm" class="d-flex flex-column justify-content-center">
     <mat-form-field>
-        <input matInput type="text" placeholder="email">
+        <input formControlName="email" matInput type="text" placeholder="email">
     </mat-form-field>
 
     <mat-form-field>
-        <input matInput type="password" placeholder="password">
+        <input formControlName="password" matInput type="password" placeholder="password">
     </mat-form-field>
 </form>
 <div class="d-flex flex-row justify-content-center">
-    <button mat-raised-button color="primary">login</button>
+    <button mat-raised-button color="primary" (click) = "onLogin()">login</button>
     <div class="col-1"></div>
     <button mat-raised-button [routerLink]="['/register']">register</button>
 </div>
