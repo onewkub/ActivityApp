@@ -2,6 +2,9 @@
 <form [formGroup]="registerForm" class="d-flex flex-column justify-content-center">
     <mat-form-field>
         <input matInput formControlName="email" type="text" placeholder="email">
+        <mat-error *ngIf="registerForm.controls['email'].hasError('required') || registerForm.controls['email'].hasError('email')">
+            require email
+        </mat-error>
     </mat-form-field>
     <mat-form-field>
         <input matInput formControlName="studentID" type="text" placeholder="student ID">
@@ -9,18 +12,31 @@
     <div class="d-flex flex-row justify-content-left">
         <mat-form-field>
             <input matInput formControlName="fname" type="text" placeholder="firstname">
+            <mat-error *ngIf="registerForm.controls['fname'].hasError('required')">
+                require firstname
+            </mat-error>
         </mat-form-field>
         <div class="col-1"></div>
         <mat-form-field>
             <input matInput formControlName="lname" type="text" placeholder="lastname">
+            <mat-error *ngIf="registerForm.controls['lname'].hasError('required')">
+                require lastname
+            </mat-error>
         </mat-form-field>
     </div>
     <mat-form-field>
         <input matInput formControlName="password" type="password" placeholder="password">
+        <mat-error *ngIf="registerForm.controls['password'].hasError('minlength') || registerForm.controls['password'].hasError('required')">
+            require 8 character password
+        </mat-error>
     </mat-form-field>
     <mat-form-field>
         <input matInput formControlName="password_confirmation" type="password" placeholder="confirm-password">
+        <mat-error *ngIf="registerForm.controls['password_confirmation'].hasError('passNotMatch') || registerForm.controls['password_confirmation'].hasError('required')">
+            confirm password is not match.
+        </mat-error>
     </mat-form-field>
-    <button mat-raised-button color="primary" [disabled]="registerForm.invalid" (click)="onRegister()" style="margin-bottom: 0.5rem;">register</button>
+    <button mat-raised-button color="primary" [disabled]="registerForm.invalid" (click)="onRegister()"
+        style="margin-bottom: 0.5rem;">register</button>
 </form>
 <a [routerLink]="['/']">login</a>
