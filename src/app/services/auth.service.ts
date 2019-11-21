@@ -19,6 +19,10 @@ export class AuthService {
     return this.http.post(`${this.rootURL}/register`, data).toPromise();
 
   }
+  async adminRegister(data){
+    console.log(data);
+    return this.http.post(`${this.rootURL}/admin_register`, data).toPromise();
+  }
   async tryLogout(){
     if(this.currentUser){
       var token = {token : this.currentUser.token};
