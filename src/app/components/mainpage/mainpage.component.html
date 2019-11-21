@@ -1,1 +1,20 @@
-<p>mainpage works!</p>
+<mat-drawer-container class="sideNavContainer" autosize>
+    <mat-drawer #drawer class="sideDrawer" mode="side">
+        <p>Menu</p>
+    </mat-drawer>
+    <mat-drawer-content class="content">
+
+        <nav class="nabar">
+            <div class="container-fluid">
+                <div class="nav-header">
+                    <button disableRipple type="button" mat-button (click)="drawer.toggle()">
+                        <mat-icon>menu</mat-icon>
+                    </button>
+                </div>
+            </div>
+        </nav>
+        <div class="container">
+            <p>Hello World</p>
+        </div>
+    </mat-drawer-content>
+</mat-drawer-container>

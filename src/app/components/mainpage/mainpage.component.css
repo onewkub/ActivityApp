@@ -1,0 +1,16 @@
+.sideNavContainer{
+    height: 100%;
+}
+.sideDrawer{
+    width: 15rem;
+    align-content: center;
+    justify-content: center;
+    text-align: center;
+}
+.container-fluid{
+    padding: 0px 0px;
+    background: rgb(207, 205, 205);
+}
+button{
+    outline: none;
+}

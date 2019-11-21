@@ -10,7 +10,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   currentUser: any;
-  handleError: any;
+  // handleError: any;
   constructor(
     public formBuilder: FormBuilder,
     public authService: AuthService
@@ -35,8 +35,12 @@ export class LoginComponent implements OnInit {
 
       },
       error =>{
-        this.handleError = error;
-        console.log(this.handleError);
+        // this.handleError = error;
+        // console.log(error);
+        if(error){
+          alert("Your email is invalid");
+          this.loginForm.reset();
+        }
       }
     );
   }

@@ -3,11 +3,20 @@
     <mat-form-field>
         <input matInput formControlName="email" type="text" placeholder="email">
         <mat-error *ngIf="registerForm.controls['email'].hasError('required') || registerForm.controls['email'].hasError('email')">
-            require email
+            require email.
+        </mat-error>
+        <mat-error *ngIf="registerForm.controls['email'].hasError('emailUsed')">
+            email already use.
         </mat-error>
     </mat-form-field>
     <mat-form-field>
         <input matInput formControlName="studentID" type="text" placeholder="student ID">
+        <mat-error *ngIf="registerForm.controls['studentID'].hasError('required')">
+            require student id.
+        </mat-error>
+        <mat-error *ngIf="registerForm.controls['studentID'].hasError('sidUsed')">
+            student id already use.
+        </mat-error>
     </mat-form-field>
     <div class="d-flex flex-row justify-content-left">
         <mat-form-field>
@@ -20,14 +29,14 @@
         <mat-form-field>
             <input matInput formControlName="lname" type="text" placeholder="lastname">
             <mat-error *ngIf="registerForm.controls['lname'].hasError('required')">
-                require lastname
+                require lastname.
             </mat-error>
         </mat-form-field>
     </div>
     <mat-form-field>
         <input matInput formControlName="password" type="password" placeholder="password">
         <mat-error *ngIf="registerForm.controls['password'].hasError('minlength') || registerForm.controls['password'].hasError('required')">
-            require 8 character password
+            require 8 character password.
         </mat-error>
     </mat-form-field>
     <mat-form-field>
