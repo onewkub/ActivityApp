@@ -14,12 +14,12 @@ export class LoginComponent implements OnInit {
   constructor(
     public formBuilder: FormBuilder,
     public authService: AuthService,
-    public router: Router
+    public router: Router,
   ) {
     this.loginForm = formBuilder.group(
       {
-        email: ['onewkub@example.com'],
-        password: ['password']
+        email: [''],
+        password: ['']
       }
     )
   }
@@ -28,39 +28,13 @@ export class LoginComponent implements OnInit {
   }
 
   async onLogin() {
-    await this.authService.tryLogin(this.loginForm.value)
-      .then(
-        async res => {
-          var temp= res['data'];
-          this.authService.currentUser = {
-            name: temp.fname + ' ' + temp.lname,
-            uid: temp.uid,
-            sid: null,
-            token: temp.token,
-            isAdmin: temp.isAdmin
-          };
-
-          if(!this.authService.currentUser.isAdmin){
-            var sid;
-            await this.authService.getStudentID(this.authService.currentUser.uid)
-            .then(studentid => sid = studentid['data']);
-            this.authService.currentUser.sid = sid.studentID;
-            // console.log(sid);
-            this.router.navigate(['/main']);
-          }
-          // console.log(this.authService.currentUser);
-          else{
-            this.router.navigate(['/manage']);
-          }
-        },
-        error => {
-          // this.handleError = error;
-          // console.log(error);
-          if (error) {
-            alert("Your email is invalid");
-            this.loginForm.reset();
-          }
-        }
-      );
+    await this.authService.getUser(this.authService.loginWithEmail(this.loginForm.value));
+    if(this.authService.currentUser){
+      if(this.authService.currentUser.isAdmin) this.router.navigate(['manage']);
+      else this.router.navigate(['main']);
+    }
+    else{
+      this.router.navigate(['/']);
+    }
   }
 }

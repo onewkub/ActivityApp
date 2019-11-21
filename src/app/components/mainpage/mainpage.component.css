@@ -11,6 +11,7 @@
 .container-fluid{
     padding: 0px 0px;
     background: rgb(207, 205, 205);
+    height: 3rem;
 }
 button{
     outline: none;
@@ -23,7 +24,7 @@ button{
     padding: 0px 0px;
 }
 .content-box{
-    padding: 1rem;
+    padding : 2rem 2rem 2rem 2rem;
 }
 .display-4{
     font-size: 1.2rem;

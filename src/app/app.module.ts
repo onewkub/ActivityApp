@@ -13,7 +13,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { MainpageComponent } from './components/mainpage/mainpage.component';
 import { AdminRegisterComponent } from './components/admin-register/admin-register.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-
+import { CookieService } from "ngx-cookie-service";
 
 @NgModule({
   declarations: [
@@ -34,7 +34,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
