@@ -42,13 +42,16 @@ export class LoginComponent implements OnInit {
 
           if(!this.authService.currentUser.isAdmin){
             var sid;
-            await this.authService.getStudentID(this.authService.currentUser.uid).then(studentid => sid = studentid['data']);
+            await this.authService.getStudentID(this.authService.currentUser.uid)
+            .then(studentid => sid = studentid['data']);
             this.authService.currentUser.sid = sid.studentID;
             // console.log(sid);
+            this.router.navigate(['/main']);
           }
-          console.log(this.authService.currentUser);
-          this.router.navigate(['/main']);
-
+          // console.log(this.authService.currentUser);
+          else{
+            this.router.navigate(['/manage']);
+          }
         },
         error => {
           // this.handleError = error;

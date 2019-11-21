@@ -5,6 +5,7 @@ import { LoginComponent } from "./components/login/login.component";
 import { RegisterComponent } from "./components/register/register.component";
 import { MainpageComponent } from "./components/mainpage/mainpage.component";
 import { AdminRegisterComponent } from "./components/admin-register/admin-register.component";
+import {  DashboardComponent} from "./components/dashboard/dashboard.component";
 
 const routes: Routes = [
   { path: '', component: HomepageComponent, children: [
@@ -12,7 +13,10 @@ const routes: Routes = [
     { path: 'register', component: RegisterComponent },
     { path: 'admin_register', component: AdminRegisterComponent },
   ]},
-  { path: 'main', component: MainpageComponent },
+  { path: 'main', component: MainpageComponent, children: [
+    { path: '', component: DashboardComponent },
+  ] },
+  { path: 'manage', component: MainpageComponent, children: [] },
 ];
 
 @NgModule({
