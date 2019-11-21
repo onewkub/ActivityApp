@@ -18,11 +18,11 @@ export class AdminRegisterComponent implements OnInit {
     public router : Router,
   ) {
     this.registerForm = formBuilder.group({
-      email: ['oldnew123@example.com', [Validators.required, Validators.email]],
+      email: ['', [Validators.required, Validators.email]],
       // studentID: ['', [Validators.required, Validators.minLength(9)]],
-      fname: ['Wachira', [Validators.required]], lname: ['Norasing', [Validators.required]],
-      password: ['password', [Validators.required, Validators.minLength(8)]],
-      password_confirmation: ['password', [Validators.required]]
+      fname: ['', [Validators.required]], lname: ['', [Validators.required]],
+      password: ['', [Validators.required, Validators.minLength(8)]],
+      password_confirmation: ['', [Validators.required]]
     }, { validators: [PassMathcer] }
     );
   }
