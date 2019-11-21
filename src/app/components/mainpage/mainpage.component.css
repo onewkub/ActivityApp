@@ -1,0 +1,30 @@
+.sideNavContainer{
+    height: 100%;
+}
+.sideDrawer{
+    width: 18rem;
+    align-content: center;
+    justify-content: center;
+    text-align: center;
+    padding-top: 1rem;
+}
+.container-fluid{
+    padding: 0px 0px;
+    background: rgb(207, 205, 205);
+}
+button{
+    outline: none;
+}
+.account-icon{
+    font-size: 8rem;
+    width: 100%;
+}
+.navbar{
+    padding: 0px 0px;
+}
+.content-box{
+    padding: 1rem;
+}
+.display-4{
+    font-size: 1.2rem;
+}

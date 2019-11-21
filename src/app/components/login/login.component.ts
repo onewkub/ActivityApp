@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,16 +10,16 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
-  currentUser: any;
-  handleError: any;
+  // handleError: any;
   constructor(
     public formBuilder: FormBuilder,
-    public authService: AuthService
+    public authService: AuthService,
+    public router: Router
   ) {
     this.loginForm = formBuilder.group(
       {
-        email: [''],
-        password: ['']
+        email: ['onewkub@example.com'],
+        password: ['password']
       }
     )
   }
@@ -28,16 +29,35 @@ export class LoginComponent implements OnInit {
 
   async onLogin() {
     await this.authService.tryLogin(this.loginForm.value)
-    .then(
-      res => {
-        this.currentUser = res['data'];
-        console.log(this.currentUser);
+      .then(
+        async res => {
+          var temp= res['data'];
+          this.authService.currentUser = {
+            name: temp.fname + ' ' + temp.lname,
+            uid: temp.uid,
+            sid: null,
+            token: temp.token,
+            isAdmin: temp.isAdmin
+          };
 
-      },
-      error =>{
-        this.handleError = error;
-        console.log(this.handleError);
-      }
-    );
+          if(!this.authService.currentUser.isAdmin){
+            var sid;
+            await this.authService.getStudentID(this.authService.currentUser.uid).then(studentid => sid = studentid['data']);
+            this.authService.currentUser.sid = sid.studentID;
+            // console.log(sid);
+          }
+          console.log(this.authService.currentUser);
+          this.router.navigate(['/main']);
+
+        },
+        error => {
+          // this.handleError = error;
+          // console.log(error);
+          if (error) {
+            alert("Your email is invalid");
+            this.loginForm.reset();
+          }
+        }
+      );
   }
 }

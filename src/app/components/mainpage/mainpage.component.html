@@ -1,1 +1,23 @@
-<p>mainpage works!</p>
+<mat-drawer-container class="sideNavContainer" autosize>
+    <mat-drawer #drawer class="sideDrawer" mode="side">
+        <mat-icon  class="account-icon">account_circle</mat-icon>
+        <h1 class="display-4" *ngIf="authService.currentUser">{{authService.currentUser.sid}}</h1>
+        <h1 class="display-4" *ngIf="authService.currentUser">{{authService.currentUser.name}}</h1>
+        <button mat-raised-button color="warn" (click)="onLogout()">Logout</button>
+    </mat-drawer>
+    <mat-drawer-content class="content">
+
+        <nav class="navbar">
+            <div class="container-fluid">
+                <div class="nav-header">
+                    <button disableRipple type="button" mat-button (click)="drawer.toggle()">
+                        <mat-icon>menu</mat-icon>
+                    </button>
+                </div>
+            </div>
+        </nav>
+        <div class="content-box">
+            <p>Hello World</p>
+        </div>
+    </mat-drawer-content>
+</mat-drawer-container>
