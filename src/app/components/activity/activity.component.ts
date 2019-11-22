@@ -1,4 +1,5 @@
 import {Component, HostListener, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-activity',
@@ -8,7 +9,7 @@ import {Component, HostListener, OnInit} from '@angular/core';
 export class ActivityComponent implements OnInit {
   cardCol = 4;
 
-  constructor() {
+  constructor(public router: Router) {
   }
 
   ngOnInit() {
@@ -21,4 +22,8 @@ export class ActivityComponent implements OnInit {
   }
 
   getCardCol = (): number => Math.floor(window.innerWidth / 300);
+
+  toProjectDetail() {
+    this.router.navigate(['/detail', 0]);
+  }
 }

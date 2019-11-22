@@ -10,6 +10,7 @@ import { ActivityStatusComponent } from "./components/activity-status/activity-s
 import { ActivityTypeComponent } from "./components/activity-type/activity-type.component";
 import { LoadingComponent } from "./components/loading/loading.component";
 import { AuthGuard } from './guards/auth.guard';
+import {ActivityDetailComponent} from './components/activity-detail/activity-detail.component';
 
 const routes: Routes = [
   { path: 'auth', component: HomepageComponent, children: [
@@ -19,6 +20,7 @@ const routes: Routes = [
     { path: 'login', pathMatch: 'full', redirectTo: '' }
   ]},
   { path: '', component: MainpageComponent, children: [
+    { path: 'detail/:id', component: ActivityDetailComponent },
     { path: 'dashboard', component: DashboardComponent },
     { path: 'status', component: ActivityStatusComponent },
     { path: 'activity/:type', component: ActivityTypeComponent },
@@ -29,9 +31,6 @@ const routes: Routes = [
   //   // { path: 'manage', pathMatch: 'full', redirectTo: 'manage' }
   // ]},
   { path: 'admin', component: MainpageComponent, children: [
-      { path: 'dashboard', component: DashboardComponent },
-      { path: 'status', component: ActivityStatusComponent },
-      { path: 'activity/:type', component: ActivityTypeComponent },
       { path: '', pathMatch: 'full', redirectTo: 'dashboard' }
     ], canActivate: [AuthGuard]},
 
