@@ -23,9 +23,12 @@ const routes: Routes = [
     { path: 'activity/:type', component: ActivityTypeComponent },
     { path: '', pathMatch: 'full', redirectTo: 'dashboard' }
   ], canActivate: [AuthGuard]},
-  // { path: 'manage', component: MainpageComponent, children: [
-  //   // { path: 'manage', pathMatch: 'full', redirectTo: 'manage' }
-  // ]},
+  { path: 'admin', component: MainpageComponent, children: [
+      { path: 'dashboard', component: DashboardComponent },
+      { path: 'status', component: ActivityStatusComponent },
+      { path: 'activity/:type', component: ActivityTypeComponent },
+      { path: '', pathMatch: 'full', redirectTo: 'dashboard' }
+    ], canActivate: [AuthGuard]},
 
   { path: '**', pathMatch: 'full', redirectTo: 'auth' }
 ];
