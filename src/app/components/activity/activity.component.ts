@@ -1,4 +1,5 @@
 import {Component, HostListener, OnInit} from '@angular/core';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-activity',
@@ -8,7 +9,9 @@ import {Component, HostListener, OnInit} from '@angular/core';
 export class ActivityComponent implements OnInit {
   cardCol = 4;
 
-  constructor() {
+  constructor(
+    public userService: UserService
+  ) {
   }
 
   ngOnInit() {

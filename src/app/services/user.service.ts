@@ -46,6 +46,15 @@ export class UserService {
 
     // console.log(this.faculty, this.major, this.other);
   }
+  public async getAllACtivity(){
+    this.initdata();
+    await this.http.get(`${this.rootURL}/activity`).toPromise().then(
+      res =>{
+        this.activityList = res['data'];
+      }
+    )
+    // console.log(this.activityList);
+  }
 
   public async getTotal(year: string) {
     // console.log(year);
@@ -95,5 +104,14 @@ export class UserService {
       major: 0,
       other: 0
     }
+  }
+  public getDate(date: Date): string {
+    date = new Date(date);
+    // console.log(date.getDate());
+    const months = ['Jan', 'Feb', 'Mar',
+      'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep',
+      'Oct', 'Nov', 'Dec'];
+    return date.getDate() + ' ' + months[date.getMonth()] + ' ' + date.getFullYear();
+    // return 'test';
   }
 }

@@ -19,6 +19,8 @@ import { ActivityComponent } from './components/activity/activity.component';
 import { ActivityTypeComponent } from './components/activity-type/activity-type.component';
 import { LoadingComponent } from './components/loading/loading.component';
 import { JoinActivityComponent } from './components/join-activity/join-activity.component';
+import { CreateActivityComponent } from './components/create-activity/create-activity.component';
+import { ActivitySettingComponent } from './components/activity-setting/activity-setting.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { JoinActivityComponent } from './components/join-activity/join-activity.
     ActivityComponent,
     ActivityTypeComponent,
     LoadingComponent,
-    JoinActivityComponent
+    JoinActivityComponent,
+    CreateActivityComponent,
+    ActivitySettingComponent
   ],
   imports: [
     BrowserModule,
@@ -45,6 +49,7 @@ import { JoinActivityComponent } from './components/join-activity/join-activity.
     ReactiveFormsModule
   ],
   providers: [CookieService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: []
 })
 export class AppModule { }

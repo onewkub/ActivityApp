@@ -26,6 +26,9 @@ export class LoadingComponent implements OnInit {
       await this.userService.getActivityList(this.authService.currentUser.sid);
       await this.userService.getTotal(this.authService.currentUser.sid.toString().substr(0, 2));
     }
+    else{
+      await this.userService.getAllACtivity();
+    }
 
     let redirectURL;
     const params = this.route.snapshot.queryParams;
@@ -34,9 +37,10 @@ export class LoadingComponent implements OnInit {
     }
     // console.log(redirectURL);
     if (redirectURL) {
-      this.router.navigateByUrl(redirectURL)
-        .catch(() => this.router.navigate(['./']));
+      // if(this.authService.currentUser.isAdmin)this.router.navigateByUrl(redirectURL).catch(() => this.router.navigate(['/admin']));
+      this.router.navigateByUrl(redirectURL).catch(() => this.router.navigate(['./']));
     } else {
+      // if(this.authService.currentUser.isAdmin)this.router.navigate(['/admin']);
       this.router.navigate(['./'])
     }
   }
