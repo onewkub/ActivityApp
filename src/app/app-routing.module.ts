@@ -9,6 +9,7 @@ import { DashboardComponent } from "./components/dashboard/dashboard.component";
 import { ActivityStatusComponent } from "./components/activity-status/activity-status.component";
 import { ActivityTypeComponent } from "./components/activity-type/activity-type.component";
 import { LoadingComponent } from "./components/loading/loading.component";
+import { JoinActivityComponent } from "./components/join-activity/join-activity.component";
 import { AuthGuard } from './guards/auth.guard';
 import {ActivityDetailComponent} from './components/activity-detail/activity-detail.component';
 
@@ -24,12 +25,11 @@ const routes: Routes = [
     { path: 'dashboard', component: DashboardComponent },
     { path: 'status', component: ActivityStatusComponent },
     { path: 'activity/:type', component: ActivityTypeComponent },
+    { path: 'join/:actid', component: JoinActivityComponent },
     { path: '', pathMatch: 'full', redirectTo: 'dashboard' }
   ], canActivate: [AuthGuard]},
   { path: 'loading', component: LoadingComponent },
-  // { path: 'manage', component: MainpageComponent, children: [
-  //   // { path: 'manage', pathMatch: 'full', redirectTo: 'manage' }
-  // ]},
+
   { path: 'admin', component: MainpageComponent, children: [
       { path: '', pathMatch: 'full', redirectTo: 'dashboard' }
     ], canActivate: [AuthGuard]},

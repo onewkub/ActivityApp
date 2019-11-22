@@ -19,6 +19,7 @@ import { ActivityComponent } from './components/activity/activity.component';
 import { ActivityTypeComponent } from './components/activity-type/activity-type.component';
 import { LoadingComponent } from './components/loading/loading.component';
 import { ActivityDetailComponent } from './components/activity-detail/activity-detail.component';
+import { JoinActivityComponent } from './components/join-activity/join-activity.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { ActivityDetailComponent } from './components/activity-detail/activity-d
     ActivityComponent,
     ActivityTypeComponent,
     LoadingComponent,
-    ActivityDetailComponent
+    ActivityDetailComponent,
+    JoinActivityComponent,
   ],
   imports: [
     BrowserModule,

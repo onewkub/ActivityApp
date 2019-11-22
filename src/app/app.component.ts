@@ -18,11 +18,11 @@ export class AppComponent {
     public authService: AuthService,
     public userService: UserService
   ) {
-    this.authService.loginWithToken(this.cookieService.get('token'));
 
   }
 
   public async ngOnInit() {
+    await this.authService.loginWithToken(this.cookieService.get('token'));
 
   }
 }

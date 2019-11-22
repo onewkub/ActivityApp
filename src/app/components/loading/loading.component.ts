@@ -32,11 +32,12 @@ export class LoadingComponent implements OnInit {
     if (params.redirectURL) {
       redirectURL = params.redirectURL;
     }
+    // console.log(redirectURL);
     if (redirectURL) {
       this.router.navigateByUrl(redirectURL)
         .catch(() => this.router.navigate(['./']));
     } else {
-      await this.router.navigate(['./']);
+      this.router.navigate(['./'])
     }
   }
 
