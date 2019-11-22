@@ -18,10 +18,10 @@ import { ActivityStatusComponent } from './components/activity-status/activity-s
 import { ActivityComponent } from './components/activity/activity.component';
 import { ActivityTypeComponent } from './components/activity-type/activity-type.component';
 import { LoadingComponent } from './components/loading/loading.component';
-import { ActivityDetailComponent } from './components/activity-detail/activity-detail.component';
 import { JoinActivityComponent } from './components/join-activity/join-activity.component';
 import { CreateActivityComponent } from './components/create-activity/create-activity.component';
 import { ActivitySettingComponent } from './components/activity-setting/activity-setting.component';
+import { ActivityDetailComponent } from './components/activity-detail/activity-detail.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +39,7 @@ import { ActivitySettingComponent } from './components/activity-setting/activity
     JoinActivityComponent,
     CreateActivityComponent,
     ActivitySettingComponent,
-    ActivityDetailComponent
+    ActivityDetailComponent,
   ],
   imports: [
     BrowserModule,

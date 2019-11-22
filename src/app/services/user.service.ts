@@ -20,7 +20,7 @@ export class UserService {
   constructor(
     public authService: AuthService,
     public http: HttpClient,
-  ) { 
+  ) {
     this.initdata();
   }
 
@@ -46,13 +46,13 @@ export class UserService {
 
     // console.log(this.faculty, this.major, this.other);
   }
-  public async getAllACtivity(){
+  public async getAllActivity(){
     this.initdata();
     await this.http.get(`${this.rootURL}/activity`).toPromise().then(
-      res =>{
+      res => {
         this.activityList = res['data'];
       }
-    )
+    );
     // console.log(this.activityList);
   }
 
