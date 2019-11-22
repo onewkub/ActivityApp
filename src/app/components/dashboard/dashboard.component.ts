@@ -8,6 +8,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class DashboardComponent implements OnInit {
   userData : any;
+  searchText;
   constructor(
     public authService: AuthService,
   ) { }

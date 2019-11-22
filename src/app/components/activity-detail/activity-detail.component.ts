@@ -1,7 +1,9 @@
+
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {UserService} from '../../services/user.service';
 import {Activity} from '../../models/activity.model';
+
 
 @Component({
   selector: 'app-activity-detail',
@@ -9,6 +11,7 @@ import {Activity} from '../../models/activity.model';
   styleUrls: ['./activity-detail.component.css']
 })
 export class ActivityDetailComponent implements OnInit {
+
 
   activity: Activity;
   constructor(
@@ -23,4 +26,5 @@ export class ActivityDetailComponent implements OnInit {
       this.activity = this.userService.activityList.find(a => routeParams.id === a.actName);
     });
   }
+
 }
