@@ -1,26 +1,28 @@
 <mat-grid-list cols="{{cardCol}}" rowHeight="1:1">
   <mat-grid-tile>
-    <mat-card class="activity-card text-center align-items-center">
-      <button mat-button (click)="openDialog()"><mat-icon>add_circle_outline</mat-icon></button>
+
+    <mat-card class="activity-card-new" (click)="openNewActivityDialog()">
+      <mat-icon>add</mat-icon>
+
     </mat-card>
   </mat-grid-tile>
   <mat-grid-tile *ngFor="let item of userService.activityList | filter:searchText">
     <mat-card class="activity-card">
       <div class="activity-card-content">
         <div class="activity-card-name">
-          <a>name: {{item.actName}}</a>
+          <a>Name: {{item.actName}}</a>
         </div>
         <div class="activity-card-desc">
-          <a>detail: {{item.detail}}</a>
+          <a>Detail: {{item.detail}}</a>
         </div>
         <div class="activity-card-data">
-          <a>date {{userService.getDate(item.actDate)}}</a>
-          <a>hour {{item.hour}}</a>
-          <a>student: 22</a>
+          <a>Date: {{userService.getDate(item.actDate)}}</a>
+          <a>Hour: {{item.hour}}</a>
+          <a>Student: 85</a>
         </div>
       </div>
       <div class="activity-detail-button">
-        <button mat-raised-button>Detail</button>
+        <button (click)="toProjectDetail(item.actName)" mat-raised-button>Detail</button>
       </div>
     </mat-card>
   </mat-grid-tile>

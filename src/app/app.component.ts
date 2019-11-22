@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { AuthService } from './services/auth.service';
 import { Router } from '@angular/router';
@@ -9,7 +9,7 @@ import { UserService } from './services/user.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'ActivityApp';
 
   constructor(
@@ -23,6 +23,5 @@ export class AppComponent {
 
   public async ngOnInit() {
     await this.authService.loginWithToken(this.cookieService.get('token'));
-
   }
 }

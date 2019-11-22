@@ -25,9 +25,8 @@ export class LoadingComponent implements OnInit {
     if (!this.authService.currentUser.isAdmin) {
       await this.userService.getActivityList(this.authService.currentUser.sid);
       await this.userService.getTotal(this.authService.currentUser.sid.toString().substr(0, 2));
-    }
-    else{
-      await this.userService.getAllACtivity();
+    } else {
+      await this.userService.getAllActivity();
     }
 
     let redirectURL;

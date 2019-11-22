@@ -1,8 +1,9 @@
 import {Component, HostListener, OnInit, Input} from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
-import { ActivityService } from 'src/app/services/activity.service';
-import { MatDialog } from "@angular/material";
-import { CreateActivityComponent } from "../create-activity/create-activity.component";
+
+import {Router} from '@angular/router';
+import {MatDialog} from '@angular/material';
+import {CreateActivityComponent} from '../create-activity/create-activity.component';
 
 @Component({
   selector: 'app-activity',
@@ -13,18 +14,21 @@ export class ActivityComponent implements OnInit {
   cardCol = 4;
   @Input() searchText;
   constructor(
+
+    public router: Router,
     public userService: UserService,
-    public activityService: ActivityService,
+
     public dialog: MatDialog,
   ) {
   }
 
   ngOnInit() {
     this.cardCol = this.getCardCol();
+    this.userService.getAllActivity();
   }
 
   @HostListener('window:resize', ['$event'])
-  onResize(event) {
+  onResize(event): void {
     this.cardCol = this.getCardCol();
   }
   openDialog(){
@@ -34,4 +38,12 @@ export class ActivityComponent implements OnInit {
     });
   }
   getCardCol = (): number => Math.floor(window.innerWidth / 300);
+
+  toProjectDetail(id: string) {
+    this.router.navigate(['/detail', id]);
+  }
+
+  openNewActivityDialog(): void {
+    this.dialog.open(CreateActivityComponent);
+  }
 }

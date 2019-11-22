@@ -25,7 +25,6 @@ import { CreateActivityComponent } from './components/create-activity/create-act
 import { ActivitySettingComponent } from './components/activity-setting/activity-setting.component';
 import { ActivityDetailComponent } from './components/activity-detail/activity-detail.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +41,7 @@ import { ActivityDetailComponent } from './components/activity-detail/activity-d
     JoinActivityComponent,
     CreateActivityComponent,
     ActivitySettingComponent,
-    ActivityDetailComponent
+    ActivityDetailComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,7 +57,7 @@ import { ActivityDetailComponent } from './components/activity-detail/activity-d
   providers: [CookieService],
   bootstrap: [AppComponent],
   entryComponents: [
-    CreateActivityComponent
+    CreateActivityComponent,
   ]
 })
 export class AppModule { }
