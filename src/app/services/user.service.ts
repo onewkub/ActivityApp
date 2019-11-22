@@ -20,7 +20,6 @@ export class UserService {
   constructor(
     public authService: AuthService,
     public http: HttpClient,
-<<<<<<< HEAD
   ) { 
     this.initdata();
   }
@@ -28,15 +27,6 @@ export class UserService {
   public async getActivityList(studentID: number){
     this.initdata();
     // console.log('get it');
-=======
-  ) {
-    this.faculty = [];
-    this.major = [];
-    this.other = [];
-  }
-
-  public async getActivityList(studentID: number) {
->>>>>>> 4f281eb3316af66d78eb8c6d1aacfb9d5baad493
     await this.http.get(`${this.rootURL}/getstudentactivity/${studentID}`).toPromise().then(
       res => {
         this.activityList = res['data'];
@@ -63,31 +53,11 @@ export class UserService {
       res => {
         this.total = res['data'][0];
       }
-<<<<<<< HEAD
     )
 
     this.getActivity('faculty').forEach(element =>{this.userHour.faculty+= element.hour})
     this.getActivity('major').forEach(element =>{this.userHour.major+= element.hour})
     this.getActivity('other').forEach(element =>{this.userHour.other+= element.hour})
-=======
-    );
-    this.userHour = {
-      year: this.total.year,
-      faculty: 0,
-      major: 0,
-      other: 0
-    };
-
-    this.getActivity('faculty').forEach(element => {
-      this.userHour.faculty += element.hour;
-    });
-    this.getActivity('major').forEach(element => {
-      this.userHour.faculty += element.hour;
-    });
-    this.getActivity('other').forEach(element => {
-      this.userHour.faculty += element.hour;
-    });
->>>>>>> 4f281eb3316af66d78eb8c6d1aacfb9d5baad493
 
     // console.log(this.total);
   }
