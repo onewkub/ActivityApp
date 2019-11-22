@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/services/auth.service';
-import { UserService } from 'src/app/services/user.service';
-import { CookieService } from 'ngx-cookie-service';
-import { Router, ActivatedRoute } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {AuthService} from 'src/app/services/auth.service';
+import {UserService} from 'src/app/services/user.service';
+import {CookieService} from 'ngx-cookie-service';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-loading',
@@ -17,24 +17,26 @@ export class LoadingComponent implements OnInit {
     private cookieService: CookieService,
     public router: Router,
     public route: ActivatedRoute
-  ) { }
+  ) {
+  }
 
   async ngOnInit() {
-    if(!this.authService.currentUser)await this.authService.loginWithToken(this.cookieService.get('token'));
-    await this.userService.getActivityList(this.authService.currentUser.sid);
-    await this.userService.getTotal(this.authService.currentUser.sid.toString().substr(0, 2))
-    var redirectURL;
-    let params = this.route.snapshot.queryParams;
-    // console.log(params['redirectURL']);
-    if (params['redirectURL']) {
-      redirectURL = params['redirectURL'];
+    // await this.authService.loginWithToken(this.cookieService.get('token'));
+    if (!this.authService.currentUser.isAdmin) {
+      await this.userService.getActivityList(this.authService.currentUser.sid);
+      await this.userService.getTotal(this.authService.currentUser.sid.toString().substr(0, 2));
+    }
+
+    let redirectURL;
+    const params = this.route.snapshot.queryParams;
+    if (params.redirectURL) {
+      redirectURL = params.redirectURL;
     }
     // console.log(redirectURL);
     if (redirectURL) {
       this.router.navigateByUrl(redirectURL)
-        .catch(() => this.router.navigate(['./']))
+        .catch(() => this.router.navigate(['./']));
     } else {
-      console.log("it else");
       this.router.navigate(['./'])
     }
   }

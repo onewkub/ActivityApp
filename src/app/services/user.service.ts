@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
-import { AuthService } from './auth.service';
-import { HttpClient } from "@angular/common/http";
-import { environment } from "../../environments/environment";
-import { Activity } from '../models/activity.model';
-import { Total } from '../models/total.model';
+import {Injectable} from '@angular/core';
+import {AuthService} from './auth.service';
+import {HttpClient} from '@angular/common/http';
+import {environment} from '../../environments/environment';
+import {Activity} from '../models/activity.model';
+import {Total} from '../models/total.model';
 
 @Injectable({
   providedIn: 'root'
@@ -16,9 +16,11 @@ export class UserService {
   total: Total;
   userHour: {faculty: number, major: number, other: number};
   rootURL = environment.apiUrl;
+
   constructor(
-    public authService : AuthService,
+    public authService: AuthService,
     public http: HttpClient,
+<<<<<<< HEAD
   ) { 
     this.initdata();
   }
@@ -26,46 +28,83 @@ export class UserService {
   public async getActivityList(studentID: number){
     this.initdata();
     // console.log('get it');
+=======
+  ) {
+    this.faculty = [];
+    this.major = [];
+    this.other = [];
+  }
+
+  public async getActivityList(studentID: number) {
+>>>>>>> 4f281eb3316af66d78eb8c6d1aacfb9d5baad493
     await this.http.get(`${this.rootURL}/getstudentactivity/${studentID}`).toPromise().then(
-      res =>{
+      res => {
         this.activityList = res['data'];
       }
     );
     this.activityList.forEach(element => {
       // console.log(element);
-      if (element.type === 'Faculty')
+      if (element.type === 'Faculty') {
         this.faculty.push(element);
-      else if (element.type === 'Major')
+      } else if (element.type === 'Major') {
         this.major.push(element);
-      else
+      } else {
         this.other.push(element);
-    })
+      }
+    });
     // console.log(this.activityList);
 
     // console.log(this.faculty, this.major, this.other);
   }
-  public async getTotal(year: string){
+
+  public async getTotal(year: string) {
     // console.log(year);
     await this.http.get(`${this.rootURL}/totalhour/${year}`).toPromise().then(
-      res =>{
+      res => {
         this.total = res['data'][0];
       }
+<<<<<<< HEAD
     )
 
     this.getActivity('faculty').forEach(element =>{this.userHour.faculty+= element.hour})
     this.getActivity('major').forEach(element =>{this.userHour.major+= element.hour})
     this.getActivity('other').forEach(element =>{this.userHour.other+= element.hour})
+=======
+    );
+    this.userHour = {
+      year: this.total.year,
+      faculty: 0,
+      major: 0,
+      other: 0
+    };
+
+    this.getActivity('faculty').forEach(element => {
+      this.userHour.faculty += element.hour;
+    });
+    this.getActivity('major').forEach(element => {
+      this.userHour.faculty += element.hour;
+    });
+    this.getActivity('other').forEach(element => {
+      this.userHour.faculty += element.hour;
+    });
+>>>>>>> 4f281eb3316af66d78eb8c6d1aacfb9d5baad493
 
     // console.log(this.total);
   }
-  getActivity(type?: string): Activity[]{
+
+  getActivity(type?: string): Activity[] {
     // console.log('faculty', this.faculty);
     // console.log('actList', this.activityList);
-    var rlt : Activity[];
-    if(type === 'faculty')rlt = this.faculty;
-    else if(type === 'major')rlt = this.major;
-    else if(type === 'other')rlt = this.other;
-    else return rlt = this.activityList;
+    let rlt: Activity[];
+    if (type === 'faculty') {
+      rlt = this.faculty;
+    } else if (type === 'major') {
+      rlt = this.major;
+    } else if (type === 'other') {
+      rlt = this.other;
+    } else {
+      return rlt = this.activityList;
+    }
     // console.log(type,rlt);
     return rlt;
   }
