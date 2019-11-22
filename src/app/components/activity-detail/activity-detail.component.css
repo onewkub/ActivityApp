@@ -9,3 +9,8 @@
 .content{
   margin-top: 1rem;
 }
+
+.activity-detail-container {
+  display: flex;
+  flex-direction: column;
+}

@@ -28,8 +28,7 @@ export class ActivityComponent implements OnInit {
 
   getCardCol = (): number => Math.floor(window.innerWidth / 300);
 
-  toProjectDetail() {
-    console.log(this.userService.activityList);
-    this.router.navigate(['/detail', 0]);
+  toProjectDetail(id: string) {
+    this.router.navigate(['/detail', id]);
   }
 }

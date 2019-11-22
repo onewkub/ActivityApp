@@ -4,6 +4,15 @@
   </div>
   <mat-icon class="d-flex">play_arrow</mat-icon>
   <div class="d-flex">
-    <h1 class="display-4">{{activityName}}</h1>
+    <h1 class="display-4">{{activity.actName}}</h1>
   </div>
+</div>
+
+<div class="activity-detail-container">
+  <a>Activity Detail : {{activity.detail}}</a>
+  <a>Date : {{userService.getDate(activity.actDate)}}</a>
+  <a>Hour : {{activity.hour}}</a>
+  <a>Type : {{activity.type}}</a>
+  <a>Mandatory : True</a>
+  <a>Student: 85</a>
 </div>
