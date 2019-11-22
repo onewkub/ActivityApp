@@ -24,10 +24,19 @@ const routes: Routes = [
     { path: 'activity/:type', component: ActivityTypeComponent },
     { path: '', pathMatch: 'full', redirectTo: 'dashboard' }
   ], canActivate: [AuthGuard]},
+<<<<<<< HEAD
   { path: 'loading', component: LoadingComponent },
   // { path: 'manage', component: MainpageComponent, children: [
   //   // { path: 'manage', pathMatch: 'full', redirectTo: 'manage' }
   // ]},
+=======
+  { path: 'admin', component: MainpageComponent, children: [
+      { path: 'dashboard', component: DashboardComponent },
+      { path: 'status', component: ActivityStatusComponent },
+      { path: 'activity/:type', component: ActivityTypeComponent },
+      { path: '', pathMatch: 'full', redirectTo: 'dashboard' }
+    ], canActivate: [AuthGuard]},
+>>>>>>> 9f14bf1b3c105203aa10b620593bff9c16609b91
 
   { path: '**', redirectTo: 'loading' }
 ];
