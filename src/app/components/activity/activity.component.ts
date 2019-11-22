@@ -1,4 +1,5 @@
 import {Component, HostListener, OnInit} from '@angular/core';
+import { UserService } from 'src/app/services/user.service';
 import {Router} from '@angular/router';
 
 @Component({
@@ -9,7 +10,10 @@ import {Router} from '@angular/router';
 export class ActivityComponent implements OnInit {
   cardCol = 4;
 
-  constructor(public router: Router) {
+  constructor(
+    public router: Router,
+    public userService: UserService
+  ) {
   }
 
   ngOnInit() {

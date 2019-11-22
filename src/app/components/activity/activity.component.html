@@ -3,26 +3,18 @@
     <mat-card class="activity-card">
     </mat-card>
   </mat-grid-tile>
-  <mat-grid-tile>
-    <mat-card class="activity-card">
-    </mat-card>
-  </mat-grid-tile>
-  <mat-grid-tile>
-    <mat-card class="activity-card">
-    </mat-card>
-  </mat-grid-tile>
-  <mat-grid-tile>
+  <mat-grid-tile *ngFor="let item of userService.activityList">
     <mat-card class="activity-card">
       <div class="activity-card-content">
         <div class="activity-card-name">
-          <a>name: asdsadasdasdsa asdsadasdasdsa</a>
+          <a>name: {{item.actName}}</a>
         </div>
         <div class="activity-card-desc">
-          <a>detail: asdsadsad asdsd sdasd sdsa sdw s asd asdas sdasd asdsadsad asdsd sdasd sdsa sdw s asd asdas sdasd asdsadsad asdsd sdasd sdsa sdw s asd asdas sdasd asdsadsad asdsd sdasd sdsa sdw s asd asdas sdasd</a>
+          <a>detail: {{item.detail}}</a>
         </div>
         <div class="activity-card-data">
-          <a>date ss2 221 223 111</a>
-          <a>hour 222</a>
+          <a>date {{userService.getDate(item.actDate)}}</a>
+          <a>hour {{item.hour}}</a>
           <a>student: 22</a>
         </div>
       </div>
