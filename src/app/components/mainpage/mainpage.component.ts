@@ -10,13 +10,26 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class MainpageComponent implements OnInit {
 
+  // isAdmin : boolean;
   constructor(
     public authService : AuthService,
     public router: Router,
     private cookieService: CookieService
-  ) { }
+  ) {
+    // this.isAdmin = this.authService.currentUser.isAdmin;
+    // console.log(this.authService.currentUser);
+    // if(this.authService.currentUser.isAdmin){
+    //   console.log('is Admin');
+    // }
+    // else{
+    //   console.log('not is Admin');
+    // }
+   }
 
   ngOnInit() {
+    // if(!this.authService.currentUser){
+    //   this.router.navigate(['./auth']);
+    // }
   }
   onLogout(){
     console.log("logout");
@@ -24,7 +37,7 @@ export class MainpageComponent implements OnInit {
     .then(res=>{
       console.log(res);
       this.cookieService.delete('token');
-      this.router.navigate(['/']);
+      this.router.navigate(['./auth']);
     });
   }
 }

@@ -28,13 +28,16 @@ export class LoginComponent implements OnInit {
   }
 
   async onLogin() {
-    await this.authService.getUser(this.authService.loginWithEmail(this.loginForm.value));
-    if(this.authService.currentUser){
-      if(this.authService.currentUser.isAdmin) this.router.navigate(['manage']);
-      else this.router.navigate(['main']);
+    await this.authService.loginWithEmail(this.loginForm.value);
+    if(!this.authService.currentUser){
+      this,this.loginForm.reset();
     }
-    else{
-      this.router.navigate(['/']);
-    }
+    // if(this.authService.currentUser){
+    //   if(this.authService.currentUser.isAdmin) this.router.navigate(['manage']);
+    //   else this.router.navigate(['main']);
+    // }
+    // else{
+    //   this.router.navigate(['/']);
+    // }
   }
 }

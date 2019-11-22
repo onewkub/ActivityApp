@@ -8,15 +8,21 @@ import { AdminRegisterComponent } from "./components/admin-register/admin-regist
 import {  DashboardComponent} from "./components/dashboard/dashboard.component";
 
 const routes: Routes = [
-  { path: '', component: HomepageComponent, children: [
+  { path: 'auth', component: HomepageComponent, children: [
     { path: '', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
     { path: 'admin_register', component: AdminRegisterComponent },
+    { path: 'login', pathMatch: 'full', redirectTo: '' }
   ]},
-  { path: 'main', component: MainpageComponent, children: [
+  { path: '', component: MainpageComponent, children: [
     { path: '', component: DashboardComponent },
+    // { path: '', pathMatch: 'full', redirectTo: '' }
   ] },
-  { path: 'manage', component: MainpageComponent, children: [] },
+  // { path: 'manage', component: MainpageComponent, children: [
+  //   // { path: 'manage', pathMatch: 'full', redirectTo: 'manage' }
+  // ]},
+
+  { path: '**', pathMatch: 'full', redirectTo: 'auth' }
 ];
 
 @NgModule({

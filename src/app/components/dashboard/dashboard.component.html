@@ -15,9 +15,9 @@
       </div>
     </div>
   </div>
-
 </div>
-<div class="content">
+<!-- USER -->
+<div *ngIf="!authService.currentUser.isAdmin" class="content">
   <mat-expansion-panel>
     <mat-expansion-panel-header>
       <mat-panel-title>
@@ -32,4 +32,8 @@
     <p>event</p>
   </mat-expansion-panel>
 
+</div>
+<!-- Admin -->
+<div *ngIf="authService.currentUser.isAdmin" class="content">
+  <h1 class="display-4">im admin</h1>
 </div>
