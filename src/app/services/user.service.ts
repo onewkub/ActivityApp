@@ -3,6 +3,7 @@ import {AuthService} from './auth.service';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {Activity} from '../models/activity.model';
+import {Total} from '../models/total.model';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,7 @@ export class UserService {
   faculty: Activity[];
   major: Activity[];
   other: Activity[];
+  total: Total;
   rootURL = environment.apiUrl;
 
   constructor(
@@ -23,7 +25,7 @@ export class UserService {
     this.other = [];
   }
 
-  public async getActivityList(studentID: string) {
+  public async getActivityList(studentID: number) {
     await this.http.get(`${this.rootURL}/getstudentactivity/${studentID}`).toPromise().then(
       res => {
         this.activityList = res['data'];
@@ -44,8 +46,19 @@ export class UserService {
     // console.log(this.faculty, this.major, this.other);
   }
 
+  public async getTotal(year: string) {
+    // console.log(year);
+    await this.http.get(`${this.rootURL}/totalhour/${year}`).toPromise().then(
+      res => {
+        this.total = res['data'][0];
+      }
+    );
+    // console.log(this.total);
+  }
+
   getActivity(type?: string): Activity[] {
     // console.log('faculty', this.faculty);
+    // console.log('actList', this.activityList);
     let rlt: Activity[];
     if (type === 'faculty') {
       rlt = this.faculty;
@@ -56,7 +69,7 @@ export class UserService {
     } else {
       return rlt = this.activityList;
     }
-    // console.log(rlt);
+    // console.log(type,rlt);
     return rlt;
   }
 }

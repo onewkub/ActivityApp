@@ -71,20 +71,9 @@ export class AuthService {
           this.currentUser.sid = sid.studentID;
           this.cookieService.set('token', this.currentUser.token);
           rlt = true;
-          var redirectURL;
-          let params = this.route.snapshot.queryParams;
-          if (params['redirectURL']) {
-            redirectURL = params['redirectURL'];
-          }
-          if (redirectURL) {
-            this.router.navigateByUrl(redirectURL)
-              .catch(() => this.router.navigate(['/']))
-          } else {
 
-            this.router.navigate(['/'])
-          }
 
-          // this.router.navigate(['/']);
+          this.router.navigate(['/loading']);
         },
         error => {
           console.log(error);
