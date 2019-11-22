@@ -1,5 +1,24 @@
 <div class="row flex-row">
-    <div class="col justify-content-start">
-        <h1 class="display-4">My Activity</h1>
+    <div class="d-flex justify-content-start">
+        <h1 class="display-4" routerLink="/dashboard">My Activity</h1>
     </div>
+    <mat-icon class="d-flex">play_arrow</mat-icon>
+    <div class="d-flex">
+        <h1 class="display-4">{{pageType[0].toUpperCase() + pageType.slice(1)}}</h1>
+    </div>
+</div>
+<div class="content">
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                This is the expansion title
+            </mat-panel-title>
+            <mat-panel-description>
+                This is a summary of the content
+            </mat-panel-description>
+            <p>time 8 hour</p>
+        </mat-expansion-panel-header>
+
+        <p>This is the primary content of the panel.</p>
+    </mat-expansion-panel>
 </div>

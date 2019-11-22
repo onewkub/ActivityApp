@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-activity-type',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ActivityTypeComponent implements OnInit {
 
-  constructor() { }
+  pageType: string = "";
+  constructor(
+    public activeRoute: ActivatedRoute
+  ) { }
 
   ngOnInit() {
+    this.activeRoute.params.subscribe(routeParams => {
+      // console.log(routeParams.type);
+      this.pageType = routeParams.type;
+    });
+
   }
 
 }

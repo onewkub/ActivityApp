@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -10,11 +11,11 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
-  // handleError: any;
   constructor(
     public formBuilder: FormBuilder,
     public authService: AuthService,
     public router: Router,
+    public userService: UserService
   ) {
     this.loginForm = formBuilder.group(
       {
@@ -28,16 +29,12 @@ export class LoginComponent implements OnInit {
   }
 
   async onLogin() {
-    await this.authService.loginWithEmail(this.loginForm.value);
-    if(!this.authService.currentUser){
-      this,this.loginForm.reset();
+    if(!await this.authService.loginWithEmail(this.loginForm.value)){
+      alert('your email or password is not correct');
+      this.loginForm.reset();
     }
-    // if(this.authService.currentUser){
-    //   if(this.authService.currentUser.isAdmin) this.router.navigate(['manage']);
-    //   else this.router.navigate(['main']);
-    // }
-    // else{
-    //   this.router.navigate(['/']);
-    // }
+    await this.userService.getActivityList(this.authService.currentUser.sid);
+
+
   }
 }
