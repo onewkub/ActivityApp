@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router} from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-mainpage',
@@ -13,12 +14,12 @@ export class MainpageComponent implements OnInit {
     public authService : AuthService,
     public router: Router,
     private cookieService: CookieService,
+    public userService: UserService
   ) {
     
    }
 
   ngOnInit() {
-
   }
   onLogout(){
     console.log("logout");

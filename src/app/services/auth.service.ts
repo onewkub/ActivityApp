@@ -3,7 +3,7 @@ import { environment } from "../../environments/environment";
 import { HttpClient } from "@angular/common/http";
 import { User } from '../models/user.model';
 import { CookieService } from 'ngx-cookie-service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 
 @Injectable({
@@ -12,11 +12,16 @@ import { Router } from '@angular/router';
 export class AuthService {
   currentUser: User = null;
   rootURL = environment.apiUrl;
+  // params: any ;
+
   constructor(
     public http: HttpClient,
     private cookieService: CookieService,
-    public router: Router
-  ) { }
+    public router: Router,
+    public route: ActivatedRoute
+  ) {
+    // console.log(this.params['redirectURL']);
+  }
 
 
 
@@ -47,6 +52,7 @@ export class AuthService {
   }
 
   async getUser(data) {
+    var rlt: boolean;
     await data
       .then(
         async res => {
@@ -64,14 +70,29 @@ export class AuthService {
             .then(studentid => sid = studentid['data']);
           this.currentUser.sid = sid.studentID;
           this.cookieService.set('token', this.currentUser.token);
-          this.router.navigate(['/']);
+          rlt = true;
+          var redirectURL;
+          let params = this.route.snapshot.queryParams;
+          if (params['redirectURL']) {
+            redirectURL = params['redirectURL'];
+          }
+          if (redirectURL) {
+            this.router.navigateByUrl(redirectURL)
+              .catch(() => this.router.navigate(['/']))
+          } else {
+
+            this.router.navigate(['/'])
+          }
+
+          // this.router.navigate(['/']);
         },
         error => {
           console.log(error);
-          this.router.navigate(['./auth']);
+          rlt = false;
+          // this.router.navigate(['./auth']);
         }
       );
-    return this.currentUser;
+    return rlt;
   }
 
 }

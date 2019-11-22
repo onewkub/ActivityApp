@@ -1,5 +1,26 @@
 <div class="row flex-row">
-    <div class="col justify-content-start">
-        <h1 class="display-4">My Activity</h1>
+    <div class="d-flex justify-content-start">
+        <h1 class="display-4" routerLink="/dashboard">My Activity</h1>
     </div>
+    <mat-icon class="d-flex">play_arrow</mat-icon>
+    <div class="d-flex">
+        <h1 class="display-4">{{pageType[0].toUpperCase() + pageType.slice(1)}}</h1>
+    </div>
+</div>
+<div class="content">
+    <div *ngFor="let item of this.userService.getActivity(pageType)">
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    {{item.actYear+item.actID+ ":" + item.actName}}  
+                </mat-panel-title>
+                <mat-panel-description>
+                    {{item.hour + " hour"}}
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <p>{{item.detail}}</p>
+        </mat-expansion-panel>
+    </div>
+
 </div>
