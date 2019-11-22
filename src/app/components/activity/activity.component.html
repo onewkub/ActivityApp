@@ -1,6 +1,6 @@
 <mat-grid-list cols="{{cardCol}}" rowHeight="1:1">
   <mat-grid-tile>
-    <mat-card class="activity-card-new">
+    <mat-card class="activity-card-new" (click)="openNewActivityDialog()">
       <mat-icon>add</mat-icon>
     </mat-card>
   </mat-grid-tile>
@@ -8,15 +8,15 @@
     <mat-card class="activity-card">
       <div class="activity-card-content">
         <div class="activity-card-name">
-          <a>name: {{item.actName}}</a>
+          <a>Name: {{item.actName}}</a>
         </div>
         <div class="activity-card-desc">
-          <a>detail: {{item.detail}}</a>
+          <a>Detail: {{item.detail}}</a>
         </div>
         <div class="activity-card-data">
-          <a>date {{userService.getDate(item.actDate)}}</a>
-          <a>hour {{item.hour}}</a>
-          <a>student: 22</a>
+          <a>Date: {{userService.getDate(item.actDate)}}</a>
+          <a>Hour: {{item.hour}}</a>
+          <a>Student: 85</a>
         </div>
       </div>
       <div class="activity-detail-button">

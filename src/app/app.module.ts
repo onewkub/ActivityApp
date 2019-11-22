@@ -52,6 +52,8 @@ import { ActivityDetailComponent } from './components/activity-detail/activity-d
   ],
   providers: [CookieService],
   bootstrap: [AppComponent],
-  entryComponents: []
+  entryComponents: [
+    CreateActivityComponent,
+  ]
 })
 export class AppModule { }

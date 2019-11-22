@@ -1,6 +1,8 @@
 import {Component, HostListener, OnInit} from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import {Router} from '@angular/router';
+import {MatDialog} from '@angular/material';
+import {CreateActivityComponent} from '../create-activity/create-activity.component';
 
 @Component({
   selector: 'app-activity',
@@ -12,7 +14,8 @@ export class ActivityComponent implements OnInit {
 
   constructor(
     public router: Router,
-    public userService: UserService
+    public userService: UserService,
+    public dialog: MatDialog,
   ) {
   }
 
@@ -22,7 +25,7 @@ export class ActivityComponent implements OnInit {
   }
 
   @HostListener('window:resize', ['$event'])
-  onResize(event) {
+  onResize(event): void {
     this.cardCol = this.getCardCol();
   }
 
@@ -30,5 +33,9 @@ export class ActivityComponent implements OnInit {
 
   toProjectDetail(id: string) {
     this.router.navigate(['/detail', id]);
+  }
+
+  openNewActivityDialog(): void {
+    this.dialog.open(CreateActivityComponent);
   }
 }
