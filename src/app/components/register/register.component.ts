@@ -35,7 +35,7 @@ export class RegisterComponent implements OnInit {
       res => {
         // console.log(res)
         alert("Your registation is success");
-        this.router.navigate(['/']);
+        this.router.navigate(['/auth']);
 
       },
       // error => {console.log(error)}
@@ -51,7 +51,6 @@ export class RegisterComponent implements OnInit {
         if(errorList.email){
           console.log(errorList.email);
           this.registerForm.get('email').setErrors({emailUsed: true})
-
         }
       }
     );
