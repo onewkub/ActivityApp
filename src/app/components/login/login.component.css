@@ -10,3 +10,8 @@ form{
     padding-left: 20%;
     padding-right: 20%;
 }
+
+.register-link-container {
+  display: flex;
+  flex-direction: column;
+}

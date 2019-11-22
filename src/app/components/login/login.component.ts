@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { AuthService } from 'src/app/services/auth.service';
-import { Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {AuthService} from 'src/app/services/auth.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
+
   // handleError: any;
   constructor(
     public formBuilder: FormBuilder,
@@ -21,7 +22,7 @@ export class LoginComponent implements OnInit {
         email: [''],
         password: ['']
       }
-    )
+    );
   }
 
   ngOnInit() {
@@ -29,8 +30,8 @@ export class LoginComponent implements OnInit {
 
   async onLogin() {
     await this.authService.loginWithEmail(this.loginForm.value);
-    if(!this.authService.currentUser){
-      this,this.loginForm.reset();
+    if (!this.authService.currentUser) {
+      this.loginForm.reset();
     }
     // if(this.authService.currentUser){
     //   if(this.authService.currentUser.isAdmin) this.router.navigate(['manage']);
