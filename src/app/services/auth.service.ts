@@ -64,8 +64,7 @@ export class AuthService {
             .then(studentid => sid = studentid['data']);
           this.currentUser.sid = sid.studentID;
           this.cookieService.set('token', this.currentUser.token);
-          if(this.currentUser.isAdmin) this.router.navigate(['/']);
-          else this.router.navigate(['/']);
+          this.router.navigate(['/']);
         },
         error => {
           console.log(error);

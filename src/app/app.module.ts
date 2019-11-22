@@ -14,6 +14,9 @@ import { MainpageComponent } from './components/mainpage/mainpage.component';
 import { AdminRegisterComponent } from './components/admin-register/admin-register.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { CookieService } from "ngx-cookie-service";
+import { ActivityStatusComponent } from './components/activity-status/activity-status.component';
+import { ActivityComponent } from './components/activity/activity.component';
+import { ActivityTypeComponent } from './components/activity-type/activity-type.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,10 @@ import { CookieService } from "ngx-cookie-service";
     RegisterComponent,
     MainpageComponent,
     AdminRegisterComponent,
-    DashboardComponent
+    DashboardComponent,
+    ActivityStatusComponent,
+    ActivityComponent,
+    ActivityTypeComponent
   ],
   imports: [
     BrowserModule,

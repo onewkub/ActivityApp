@@ -5,7 +5,10 @@ import { LoginComponent } from "./components/login/login.component";
 import { RegisterComponent } from "./components/register/register.component";
 import { MainpageComponent } from "./components/mainpage/mainpage.component";
 import { AdminRegisterComponent } from "./components/admin-register/admin-register.component";
-import {  DashboardComponent} from "./components/dashboard/dashboard.component";
+import { DashboardComponent } from "./components/dashboard/dashboard.component";
+import { ActivityStatusComponent } from "./components/activity-status/activity-status.component";
+import { ActivityTypeComponent } from "./components/activity-type/activity-type.component";
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   { path: 'auth', component: HomepageComponent, children: [
@@ -15,9 +18,11 @@ const routes: Routes = [
     { path: 'login', pathMatch: 'full', redirectTo: '' }
   ]},
   { path: '', component: MainpageComponent, children: [
-    { path: '', component: DashboardComponent },
-    // { path: '', pathMatch: 'full', redirectTo: '' }
-  ] },
+    { path: 'dashboard', component: DashboardComponent },
+    { path: 'status', component: ActivityStatusComponent },
+    { path: 'activity/:type', component: ActivityTypeComponent },
+    { path: '', pathMatch: 'full', redirectTo: 'dashboard' }
+  ], canActivate: [AuthGuard]},
   // { path: 'manage', component: MainpageComponent, children: [
   //   // { path: 'manage', pathMatch: 'full', redirectTo: 'manage' }
   // ]},
@@ -27,6 +32,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [AuthGuard]
 })
 export class AppRoutingModule { }

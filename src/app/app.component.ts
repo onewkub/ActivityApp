@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { AuthService } from './services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -9,20 +10,20 @@ import { AuthService } from './services/auth.service';
 })
 export class AppComponent {
   title = 'ActivityApp';
-  // private tokenValue: string;
 
   constructor(
     private cookieService: CookieService,
+    public router: Router,
     public authService: AuthService
     ) { 
       
     }
 
   public async ngOnInit(){
-    // console.log(this.tokenValue);
-    if(this.cookieService.get('token')){
+    if(this.cookieService.get('token'))
       await this.authService.loginWithToken(this.cookieService.get('token'));
-      // console.log(this.authService.currentUser.isAdmin);
-    }
+    else
+      this.router.navigate(['/auth'])
+      // console.log(this.authService.currentUser);
   }
 }

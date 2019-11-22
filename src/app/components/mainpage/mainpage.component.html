@@ -4,8 +4,8 @@
         <h1 class="display-4" *ngIf="authService.currentUser">{{authService.currentUser.sid}}</h1>
         <h1 class="display-4" *ngIf="authService.currentUser">{{authService.currentUser.name}}</h1>
         <div class="d-flex flex-column">
-            <button mat-raised-button>My Activity</button>
-            <button mat-raised-button *ngIf="!authService.currentUser.isAdmin">Activity Status</button>
+            <button mat-raised-button routerLink='/dashboard' routerLinkActive="is-active" >My Activity</button>
+            <!-- <button mat-raised-button routerLink='/status' routerLinkActive="is-active" *ngIf="!authService.currentUser.isAdmin">Activity Status</button> -->
             <button mat-raised-button color="warn" (click)="onLogout()">Logout</button>
         </div>
 

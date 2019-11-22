@@ -3,7 +3,7 @@
     <h1 class="display-4">My Activity</h1>
   </div>
 
-  <div class="col justify-content-end text-right">
+  <div *ngIf="authService.currentUser.isAdmin" class="col justify-content-end text-right">
     <div class="row d-flex">
       <div class="col d-flex p-0 justify-content-end">
         <mat-form-field>
@@ -16,24 +16,10 @@
     </div>
   </div>
 </div>
+
 <!-- USER -->
-<div *ngIf="!authService.currentUser.isAdmin" class="content">
-  <mat-expansion-panel>
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        <p>Event</p>
-      </mat-panel-title>
-      <mat-panel-description>
-        <p>detail</p>
-        <p>1 hour</p>
-      </mat-panel-description>
-    </mat-expansion-panel-header>
+<app-activity-status *ngIf="!authService.currentUser.isAdmin"></app-activity-status>
 
-    <p>event</p>
-  </mat-expansion-panel>
-
-</div>
 <!-- Admin -->
-<div *ngIf="authService.currentUser.isAdmin" class="content">
-  <h1 class="display-4">im admin</h1>
-</div>
+<app-activity *ngIf="authService.currentUser.isAdmin"></app-activity>
+
