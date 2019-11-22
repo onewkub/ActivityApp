@@ -11,6 +11,7 @@ import { ActivityTypeComponent } from "./components/activity-type/activity-type.
 import { LoadingComponent } from "./components/loading/loading.component";
 import { JoinActivityComponent } from "./components/join-activity/join-activity.component";
 import { ActivitySettingComponent } from "./components/activity-setting/activity-setting.component";
+import { ActivityDetailComponent } from "./components/activity-detail/activity-detail.component";
 import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
@@ -26,6 +27,7 @@ const routes: Routes = [
     { path: 'activity/:type', component: ActivityTypeComponent },
     { path: 'setting', component: ActivitySettingComponent },
     { path: 'join/:actid', component: JoinActivityComponent },
+    { path: 'activity/:id', component: ActivityDetailComponent },
     { path: '', pathMatch: 'full', redirectTo: 'dashboard' }
   ], canActivate: [AuthGuard]},
   { path: 'loading', component: LoadingComponent },

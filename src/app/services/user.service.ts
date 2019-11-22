@@ -114,4 +114,12 @@ export class UserService {
     return date.getDate() + ' ' + months[date.getMonth()] + ' ' + date.getFullYear();
     // return 'test';
   }
+  public async createActivity(data){
+    var rlt;
+    await this.http.post(`${this.rootURL}/activity`, data).toPromise().then(
+      res =>{rlt = res},
+      error => {console.log(error);}
+    );
+    return rlt;
+  }
 }

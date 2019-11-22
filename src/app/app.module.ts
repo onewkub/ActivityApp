@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatNativeDateModule } from "@angular/material";
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 import { AppComponent } from './app.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
@@ -22,6 +23,8 @@ import { LoadingComponent } from './components/loading/loading.component';
 import { JoinActivityComponent } from './components/join-activity/join-activity.component';
 import { CreateActivityComponent } from './components/create-activity/create-activity.component';
 import { ActivitySettingComponent } from './components/activity-setting/activity-setting.component';
+import { ActivityDetailComponent } from './components/activity-detail/activity-detail.component';
+
 
 @NgModule({
   declarations: [
@@ -38,7 +41,8 @@ import { ActivitySettingComponent } from './components/activity-setting/activity
     LoadingComponent,
     JoinActivityComponent,
     CreateActivityComponent,
-    ActivitySettingComponent
+    ActivitySettingComponent,
+    ActivityDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +52,8 @@ import { ActivitySettingComponent } from './components/activity-setting/activity
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    Ng2SearchPipeModule
   ],
   providers: [CookieService],
   bootstrap: [AppComponent],

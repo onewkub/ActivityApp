@@ -25,7 +25,7 @@
             <mat-label>Type</mat-label>
             <mat-select formControlName="type">
                 <mat-option *ngFor="let item of typeList" [value]="item">
-                    {{item}}
+                    {{item.name}}
                 </mat-option>
             </mat-select>
         </mat-form-field>

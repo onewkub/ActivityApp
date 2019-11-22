@@ -1,4 +1,4 @@
-import {Component, HostListener, OnInit} from '@angular/core';
+import {Component, HostListener, OnInit, Input} from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { ActivityService } from 'src/app/services/activity.service';
 import { MatDialog } from "@angular/material";
@@ -11,7 +11,7 @@ import { CreateActivityComponent } from "../create-activity/create-activity.comp
 })
 export class ActivityComponent implements OnInit {
   cardCol = 4;
-
+  @Input() searchText;
   constructor(
     public userService: UserService,
     public activityService: ActivityService,

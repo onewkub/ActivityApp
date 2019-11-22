@@ -7,7 +7,7 @@
     <div class="row d-flex">
       <div class="col d-flex p-0 justify-content-end">
         <mat-form-field>
-          <input matInput type="text">
+          <input type="text" [(ngModel)]="searchText" autocomplete="off" matInput type="text">
         </mat-form-field>
       </div>
       <div class="col-1 d-flex p-0 text-left">
@@ -21,5 +21,5 @@
 <app-activity-status *ngIf="!authService.currentUser.isAdmin"></app-activity-status>
 
 <!-- Admin -->
-<app-activity *ngIf="authService.currentUser.isAdmin"></app-activity>
+<app-activity [searchText]='searchText' *ngIf="authService.currentUser.isAdmin"></app-activity>
 

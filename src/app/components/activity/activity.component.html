@@ -4,7 +4,7 @@
       <button mat-button (click)="openDialog()"><mat-icon>add_circle_outline</mat-icon></button>
     </mat-card>
   </mat-grid-tile>
-  <mat-grid-tile *ngFor="let item of userService.activityList">
+  <mat-grid-tile *ngFor="let item of userService.activityList | filter:searchText">
     <mat-card class="activity-card">
       <div class="activity-card-content">
         <div class="activity-card-name">
