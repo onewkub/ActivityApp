@@ -14,12 +14,15 @@ export class AppComponent {
   constructor(
     private cookieService: CookieService,
     public authService: AuthService
-    ) { }
+    ) { 
+      
+    }
 
   public async ngOnInit(){
     // console.log(this.tokenValue);
     if(this.cookieService.get('token')){
       await this.authService.getUser(this.authService.loginWithToken(this.cookieService.get('token')));
+      console.log(this.authService.currentUser.isAdmin);
     }
   }
 }

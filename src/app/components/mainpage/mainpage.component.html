@@ -1,9 +1,14 @@
 <mat-drawer-container class="sideNavContainer" autosize>
     <mat-drawer #drawer class="sideDrawer" mode="side">
-        <mat-icon  class="account-icon">account_circle</mat-icon>
+        <mat-icon class="account-icon">account_circle</mat-icon>
         <h1 class="display-4" *ngIf="authService.currentUser">{{authService.currentUser.sid}}</h1>
         <h1 class="display-4" *ngIf="authService.currentUser">{{authService.currentUser.name}}</h1>
-        <button mat-raised-button color="warn" (click)="onLogout()">Logout</button>
+        <div class="d-flex flex-column">
+            <button mat-raised-button>My Activity</button>
+            <button *ngIf="!authService.currentUser.isAdmin" mat-raised-button>Activity Status</button>
+            <button mat-raised-button color="warn" (click)="onLogout()">Logout</button>
+        </div>
+
     </mat-drawer>
     <mat-drawer-content class="content">
 

@@ -8,3 +8,17 @@
     width: 100%;
     font-size: 3rem;
 }
+.mat-expansion-panel-header-description {
+    justify-content: space-between;
+    /* justify-content: end; */
+    align-items: center;
+    /* text-align: end; */
+    margin-bottom: 0px;
+  }
+.mat-expansion-panel-header-title,
+.mat-expansion-panel-header-description {
+  flex-basis: 0;
+}
+p{
+    margin-bottom: 0px;
+}
