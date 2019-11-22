@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatNativeDateModule } from "@angular/material";
 
 import { AppComponent } from './app.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
@@ -46,10 +47,13 @@ import { ActivitySettingComponent } from './components/activity-setting/activity
     MaterialModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatNativeDateModule
   ],
   providers: [CookieService],
   bootstrap: [AppComponent],
-  entryComponents: []
+  entryComponents: [
+    CreateActivityComponent
+  ]
 })
 export class AppModule { }
