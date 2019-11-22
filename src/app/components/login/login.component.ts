@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
         email: [''],
         password: ['']
       }
-    )
+    );
   }
 
   ngOnInit() {

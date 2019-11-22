@@ -1,51 +1,46 @@
-<h1 class="display-4" style="font-size: 2rem; font-weight: bold;">register</h1>
+<h1 class="display-4" style="font-size: 2rem; font-weight: bold;">Administrator Registration</h1>
 <form [formGroup]="registerForm" class="d-flex flex-column justify-content-center">
+  <mat-form-field>
+    <input formControlName="email" matInput placeholder="Email" type="text">
+    <mat-error
+      *ngIf="registerForm.controls['email'].hasError('required') || registerForm.controls['email'].hasError('email')">
+      Require email.
+    </mat-error>
+    <mat-error *ngIf="registerForm.controls['email'].hasError('emailUsed')">
+      This email have already been used.
+    </mat-error>
+  </mat-form-field>
+  <div class="d-flex flex-row justify-content-left">
     <mat-form-field>
-        <input matInput formControlName="email" type="text" placeholder="email">
-        <mat-error *ngIf="registerForm.controls['email'].hasError('required') || registerForm.controls['email'].hasError('email')">
-            require email.
-        </mat-error>
-        <mat-error *ngIf="registerForm.controls['email'].hasError('emailUsed')">
-            email already use.
-        </mat-error>
+      <input formControlName="fname" matInput placeholder="First Name" type="text">
+      <mat-error *ngIf="registerForm.controls['fname'].hasError('required')">
+        Require first name.
+      </mat-error>
     </mat-form-field>
-    <!-- <mat-form-field>
-        <input matInput formControlName="studentID" type="text" placeholder="student ID">
-        <mat-error *ngIf="registerForm.controls['studentID'].hasError('required')">
-            require student id.
-        </mat-error>
-        <mat-error *ngIf="registerForm.controls['studentID'].hasError('sidUsed')">
-            student id already use.
-        </mat-error>
-    </mat-form-field> -->
-    <div class="d-flex flex-row justify-content-left">
-        <mat-form-field>
-            <input matInput formControlName="fname" type="text" placeholder="firstname">
-            <mat-error *ngIf="registerForm.controls['fname'].hasError('required')">
-                require firstname
-            </mat-error>
-        </mat-form-field>
-        <div class="col-1"></div>
-        <mat-form-field>
-            <input matInput formControlName="lname" type="text" placeholder="lastname">
-            <mat-error *ngIf="registerForm.controls['lname'].hasError('required')">
-                require lastname.
-            </mat-error>
-        </mat-form-field>
-    </div>
+    <div class="col-1"></div>
     <mat-form-field>
-        <input matInput formControlName="password" type="password" placeholder="password">
-        <mat-error *ngIf="registerForm.controls['password'].hasError('minlength') || registerForm.controls['password'].hasError('required')">
-            require 8 character password.
-        </mat-error>
+      <input formControlName="lname" matInput placeholder="Last Name" type="text">
+      <mat-error *ngIf="registerForm.controls['lname'].hasError('required')">
+        Require last name.
+      </mat-error>
     </mat-form-field>
-    <mat-form-field>
-        <input matInput formControlName="password_confirmation" type="password" placeholder="confirm-password">
-        <mat-error *ngIf="registerForm.controls['password_confirmation'].hasError('passNotMatch') || registerForm.controls['password_confirmation'].hasError('required')">
-            confirm password is not match.
-        </mat-error>
-    </mat-form-field>
-    <button mat-raised-button color="primary" [disabled]="registerForm.invalid" (click)="onRegister()"
-        style="margin-bottom: 0.5rem;">register</button>
+  </div>
+  <mat-form-field>
+    <input formControlName="password" matInput placeholder="Password" type="password">
+    <mat-error
+      *ngIf="registerForm.controls['password'].hasError('minlength') || registerForm.controls['password'].hasError('required')">
+      Require at least 8 characters.
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input formControlName="password_confirmation" matInput placeholder="Confirm Password" type="password">
+    <mat-error
+      *ngIf="registerForm.controls['password_confirmation'].hasError('passNotMatch') || registerForm.controls['password_confirmation'].hasError('required')">
+      Confirm password is not match.
+    </mat-error>
+  </mat-form-field>
+  <button (click)="onRegister()" [disabled]="registerForm.invalid" color="primary" mat-raised-button
+          style="margin-bottom: 0.5rem;">Register
+  </button>
 </form>
-<a [routerLink]="['./']">login</a>
+<a [routerLink]="['/auth']">Login</a>

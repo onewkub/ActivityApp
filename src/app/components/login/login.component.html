@@ -10,4 +10,8 @@
     </mat-form-field>
     <button mat-raised-button color="primary" (click)="onLogin()" style="margin-bottom: 0.5rem;">login</button>
 </form>
-<a [routerLink]="['./register']">register</a>
+
+<div class="register-link-container">
+  <a [routerLink]="['./register']">register</a>
+  <a [routerLink]="['./admin_register']">admin register</a>
+</div>
