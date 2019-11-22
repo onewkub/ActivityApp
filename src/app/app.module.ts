@@ -38,7 +38,8 @@ import { ActivitySettingComponent } from './components/activity-setting/activity
     LoadingComponent,
     JoinActivityComponent,
     CreateActivityComponent,
-    ActivitySettingComponent
+    ActivitySettingComponent,
+    ActivityDetailComponent
   ],
   imports: [
     BrowserModule,
