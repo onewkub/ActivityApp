@@ -8,6 +8,7 @@ import { AdminRegisterComponent } from "./components/admin-register/admin-regist
 import { DashboardComponent } from "./components/dashboard/dashboard.component";
 import { ActivityStatusComponent } from "./components/activity-status/activity-status.component";
 import { ActivityTypeComponent } from "./components/activity-type/activity-type.component";
+import { LoadingComponent } from "./components/loading/loading.component";
 import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
@@ -23,11 +24,12 @@ const routes: Routes = [
     { path: 'activity/:type', component: ActivityTypeComponent },
     { path: '', pathMatch: 'full', redirectTo: 'dashboard' }
   ], canActivate: [AuthGuard]},
+  { path: 'loading', component: LoadingComponent },
   // { path: 'manage', component: MainpageComponent, children: [
   //   // { path: 'manage', pathMatch: 'full', redirectTo: 'manage' }
   // ]},
 
-  { path: '**', pathMatch: 'full', redirectTo: 'auth' }
+  { path: '**', redirectTo: 'loading' }
 ];
 
 @NgModule({

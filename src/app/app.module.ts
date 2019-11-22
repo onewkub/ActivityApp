@@ -17,6 +17,7 @@ import { CookieService } from "ngx-cookie-service";
 import { ActivityStatusComponent } from './components/activity-status/activity-status.component';
 import { ActivityComponent } from './components/activity/activity.component';
 import { ActivityTypeComponent } from './components/activity-type/activity-type.component';
+import { LoadingComponent } from './components/loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ActivityTypeComponent } from './components/activity-type/activity-type.
     DashboardComponent,
     ActivityStatusComponent,
     ActivityComponent,
-    ActivityTypeComponent
+    ActivityTypeComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,

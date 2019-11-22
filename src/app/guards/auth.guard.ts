@@ -18,13 +18,15 @@ export class AuthGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    // if (this.cookieService.get('token')) this.router.navigate(['loading'], { queryParams: { 'redirectURL': state.url } });
+
     if (this.authService.currentUser) return true;
     // this.useToken();
     else {
       console.log('Could not authenticate');
-      this.router.navigate(['auth'],{queryParams:{'redirectURL':state.url}});
+      this.router.navigate(['auth'], { queryParams: { 'redirectURL': state.url } });
       // console.log(state.url);
       return false;
-  }
+    }
   }
 }

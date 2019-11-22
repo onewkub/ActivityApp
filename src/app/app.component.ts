@@ -17,16 +17,12 @@ export class AppComponent {
     public router: Router,
     public authService: AuthService,
     public userService: UserService
-    ) { 
-      
-    }
+  ) {
+    this.authService.loginWithToken(this.cookieService.get('token'));
 
-  public async ngOnInit(){
-    if(this.cookieService.get('token')){
-      await this.authService.loginWithToken(this.cookieService.get('token'));
-      await this.userService.getActivityList(this.authService.currentUser.sid);
-    }
-    else
-      this.router.navigate(['/auth'])
+  }
+
+  public async ngOnInit() {
+
   }
 }

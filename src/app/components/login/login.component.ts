@@ -33,7 +33,9 @@ export class LoginComponent implements OnInit {
       alert('your email or password is not correct');
       this.loginForm.reset();
     }
-    await this.userService.getActivityList(this.authService.currentUser.sid);
+    // await this.userService.getActivityList(this.authService.currentUser.sid);
+    // await this.userService.getTotal(this.authService.currentUser.sid.toString().substr(0, 1))
+    
 
 
   }
