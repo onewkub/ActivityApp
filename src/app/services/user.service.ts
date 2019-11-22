@@ -14,6 +14,7 @@ export class UserService {
   major: Activity[];
   other: Activity[];
   total: Total;
+  userHour: Total;
   rootURL = environment.apiUrl;
 
   constructor(
@@ -53,6 +54,23 @@ export class UserService {
         this.total = res['data'][0];
       }
     );
+    this.userHour = {
+      year: this.total.year,
+      faculty: 0,
+      major: 0,
+      other: 0
+    };
+
+    this.getActivity('faculty').forEach(element => {
+      this.userHour.faculty += element.hour;
+    });
+    this.getActivity('major').forEach(element => {
+      this.userHour.faculty += element.hour;
+    });
+    this.getActivity('other').forEach(element => {
+      this.userHour.faculty += element.hour;
+    });
+
     // console.log(this.total);
   }
 
