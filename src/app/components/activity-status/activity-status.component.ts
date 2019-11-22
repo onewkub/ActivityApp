@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Total } from 'src/app/models/total.model';
 import { UserService } from 'src/app/services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-activity-status',
@@ -9,12 +9,12 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class ActivityStatusComponent implements OnInit {
   constructor(
-    public userService: UserService
+    public userService: UserService,
+    public router: Router
   ) {
    }
 
   ngOnInit() {
-
   }
 
 }

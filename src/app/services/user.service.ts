@@ -14,18 +14,18 @@ export class UserService {
   major: Activity[];
   other: Activity[];
   total: Total;
-  userHour: Total;
+  userHour: {faculty: number, major: number, other: number};
   rootURL = environment.apiUrl;
   constructor(
     public authService : AuthService,
     public http: HttpClient,
   ) { 
-    this.faculty = [];
-    this.major = [];
-    this.other = [];
+    this.initdata();
   }
 
   public async getActivityList(studentID: number){
+    this.initdata();
+    // console.log('get it');
     await this.http.get(`${this.rootURL}/getstudentactivity/${studentID}`).toPromise().then(
       res =>{
         this.activityList = res['data'];
@@ -51,15 +51,10 @@ export class UserService {
         this.total = res['data'][0];
       }
     )
-    this.userHour = {
-      year: this.total.year,
-      faculty: 0,
-      major: 0,
-      other: 0
-    }
+
     this.getActivity('faculty').forEach(element =>{this.userHour.faculty+= element.hour})
-    this.getActivity('major').forEach(element =>{this.userHour.faculty+= element.hour})
-    this.getActivity('other').forEach(element =>{this.userHour.faculty+= element.hour})
+    this.getActivity('major').forEach(element =>{this.userHour.major+= element.hour})
+    this.getActivity('other').forEach(element =>{this.userHour.other+= element.hour})
 
     // console.log(this.total);
   }
@@ -73,5 +68,23 @@ export class UserService {
     else return rlt = this.activityList;
     // console.log(type,rlt);
     return rlt;
+  }
+  async joinActivity(aid: string){
+    var data = {stdID: this.authService.currentUser.sid};
+    await this.http.post(`${this.rootURL}/join_activity/${aid}`, data).toPromise().then(
+      res=>{alert('your data has been saved')},
+      error =>{alert('you had already or it does not have this activity')}
+    );
+  }
+  initdata():void{
+    this.faculty = [];
+    this.major = [];
+    this.other = [];
+    this.activityList = [];
+    this.userHour = {
+      faculty: 0,
+      major: 0,
+      other: 0
+    }
   }
 }

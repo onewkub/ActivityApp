@@ -18,6 +18,7 @@ import { ActivityStatusComponent } from './components/activity-status/activity-s
 import { ActivityComponent } from './components/activity/activity.component';
 import { ActivityTypeComponent } from './components/activity-type/activity-type.component';
 import { LoadingComponent } from './components/loading/loading.component';
+import { JoinActivityComponent } from './components/join-activity/join-activity.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { LoadingComponent } from './components/loading/loading.component';
     ActivityStatusComponent,
     ActivityComponent,
     ActivityTypeComponent,
-    LoadingComponent
+    LoadingComponent,
+    JoinActivityComponent
   ],
   imports: [
     BrowserModule,

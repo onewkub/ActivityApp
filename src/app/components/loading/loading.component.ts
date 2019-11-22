@@ -19,20 +19,22 @@ export class LoadingComponent implements OnInit {
     public route: ActivatedRoute
   ) { }
 
-  async ngOnInit() {  
-    // await this.authService.loginWithToken(this.cookieService.get('token'));
+  async ngOnInit() {
+    if(!this.authService.currentUser)await this.authService.loginWithToken(this.cookieService.get('token'));
     await this.userService.getActivityList(this.authService.currentUser.sid);
     await this.userService.getTotal(this.authService.currentUser.sid.toString().substr(0, 2))
     var redirectURL;
     let params = this.route.snapshot.queryParams;
+    // console.log(params['redirectURL']);
     if (params['redirectURL']) {
       redirectURL = params['redirectURL'];
     }
+    // console.log(redirectURL);
     if (redirectURL) {
       this.router.navigateByUrl(redirectURL)
         .catch(() => this.router.navigate(['./']))
     } else {
-
+      console.log("it else");
       this.router.navigate(['./'])
     }
   }
