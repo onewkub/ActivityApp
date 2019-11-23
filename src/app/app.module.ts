@@ -22,6 +22,7 @@ import { JoinActivityComponent } from './components/join-activity/join-activity.
 import { CreateActivityComponent } from './components/create-activity/create-activity.component';
 import { ActivitySettingComponent } from './components/activity-setting/activity-setting.component';
 import { ActivityDetailComponent } from './components/activity-detail/activity-detail.component';
+import { QRCodeModule } from 'angular2-qrcode';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { ActivityDetailComponent } from './components/activity-detail/activity-d
     MaterialModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    QRCodeModule
   ],
   providers: [CookieService],
   bootstrap: [AppComponent],
