@@ -1,1 +1,38 @@
-<p>create-activity works!</p>
+<h1 mat-dialog-title>Create Activity</h1>
+<div mat-dialog-content>
+    <form [formGroup]="createActivityForm" (ngSubmit)="onSubmit()">
+
+        <mat-form-field>
+            <input formControlName="actID" type="text" matInput placeholder="Activity ID" autocomplete="off">
+        </mat-form-field>
+        <mat-form-field>
+            <input formControlName="actName" type="text" matInput placeholder="Activity Name" autocomplete="off">
+        </mat-form-field>
+        <mat-form-field>
+            <input formControlName="hour" type="text" matInput placeholder="Hour" autocomplete="off">
+        </mat-form-field><br>
+        <mat-form-field>
+            <label>Detail</label>
+            <textarea formControlName="detail" autocomplete="off" matInput></textarea>
+        </mat-form-field>
+        <mat-form-field>
+            <input formControlName="actDate" matInput [matDatepicker]="actDate" placeholder="Date" autocomplete="off">
+            <mat-datepicker-toggle matSuffix [for]="actDate"></mat-datepicker-toggle>
+            <mat-datepicker #actDate></mat-datepicker>
+        </mat-form-field>
+        <mat-checkbox formControlName="isRequired">Required</mat-checkbox>
+        <mat-form-field>
+            <mat-label>Type</mat-label>
+            <mat-select formControlName="type">
+                <mat-option *ngFor="let item of typeList" [value]="item">
+                    {{item.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+    </form>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Close</button>
+    <button [disabled]="createActivityForm.invalid" (click)="onSubmit()" mat-raised-button>Add Project</button>
+</div>
