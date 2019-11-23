@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatNativeDateModule } from "@angular/material";
+import { MatNativeDateModule } from '@angular/material';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 import { AppComponent } from './app.component';
@@ -24,6 +24,7 @@ import { JoinActivityComponent } from './components/join-activity/join-activity.
 import { CreateActivityComponent } from './components/create-activity/create-activity.component';
 import { ActivitySettingComponent } from './components/activity-setting/activity-setting.component';
 import { ActivityDetailComponent } from './components/activity-detail/activity-detail.component';
+import { QRCodeModule } from 'angular2-qrcode';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { ActivityDetailComponent } from './components/activity-detail/activity-d
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    QRCodeModule,
     MatNativeDateModule,
     Ng2SearchPipeModule
   ],
