@@ -16,6 +16,7 @@ export class ActivityDetailComponent implements OnInit {
   id :string;
   activity: Activity;
   joinLink: string;
+  qrGen: string
   constructor(
     public userService: UserService,
     public activeRoute: ActivatedRoute,
@@ -32,6 +33,7 @@ export class ActivityDetailComponent implements OnInit {
     this.activity = this.userService.activityList.find(a => a.actYear.toString() === this.year && a.actID.toString() === this.id);
     this.actID = this.year+this.id;
     this.joinLink = `${environment.webUrl}/join/${this.actID}`;
+    this.qrGen = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${this.joinLink}`;
     console.log(this.joinLink);
   }
   getQrCode(){
