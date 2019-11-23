@@ -75,7 +75,6 @@ export class UserService {
         }
       }
     );
-
     this.getActivity('faculty').forEach(element => {
       this.userHour.faculty += element.hour;
     });
@@ -139,7 +138,21 @@ export class UserService {
     return date.getDate() + ' ' + months[date.getMonth()] + ' ' + date.getFullYear();
     // return 'test';
   }
-
+  public async addTotalHour(data){
+    var rlt;
+    await this.http.post(`${this.rootURL}/totalhour`, data).toPromise().then(res=>{rlt=res});
+    return rlt;
+  }
+  public async editTotalHour(data){
+    var rlt
+    await this.http.put(`${this.rootURL}/totalhour/${data.year}`, data).toPromise().then(res=>{rlt=res});
+    return rlt
+  }
+  public async getTotalHour(data){
+    var rlt
+    await this.http.get(`${this.rootURL}/totalhour/${data.year}`, data).toPromise().then(res=>{rlt=res});
+    return rlt;
+  }
   public async createActivity(data) {
     var rlt;
     await this.http.post(`${this.rootURL}/activity`, data).toPromise().then(

@@ -1,1 +1,24 @@
-<p>activity-setting works!</p>
+<div class="row flex-row">
+    <div class="col justify-content-start">
+        <h1 class="display-4">Status Activity</h1>
+    </div>
+</div>
+<form [formGroup]="addTotalForm">
+    <div class="d-flex flex-column">
+
+        <mat-form-field>
+            <input matInput formControlName="year" type="text" placeholder="year">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput formControlName="faculty" type="text" placeholder="faculty">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput formControlName="major" type="text" placeholder="major">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput formControlName="other" type="text" placeholder="other">
+        </mat-form-field>
+        <button (click)="onSubmit()" mat-raised-button>Submit</button>
+    </div>
+
+</form>
