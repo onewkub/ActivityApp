@@ -24,7 +24,7 @@ export class ActivityComponent implements OnInit {
 
   ngOnInit() {
     this.cardCol = this.getCardCol();
-    this.userService.getAllActivity();
+    // this.userService.getAllActivity();
   }
 
   @HostListener('window:resize', ['$event'])
@@ -40,6 +40,7 @@ export class ActivityComponent implements OnInit {
   getCardCol = (): number => Math.floor(window.innerWidth / 300);
 
   toProjectDetail(id: string) {
+    // console.log(id);
     this.router.navigate(['/detail', id]);
   }
 

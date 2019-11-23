@@ -3,7 +3,6 @@
 
     <mat-card class="activity-card-new" (click)="openNewActivityDialog()">
       <mat-icon>add</mat-icon>
-
     </mat-card>
   </mat-grid-tile>
   <mat-grid-tile *ngFor="let item of userService.activityList | filter:searchText">
@@ -22,7 +21,7 @@
         </div>
       </div>
       <div class="activity-detail-button">
-        <button (click)="toProjectDetail(item.actName)" mat-raised-button>Detail</button>
+        <button (click)="toProjectDetail(item.actYear+''+item.actID)" mat-raised-button>Detail</button>
       </div>
     </mat-card>
   </mat-grid-tile>

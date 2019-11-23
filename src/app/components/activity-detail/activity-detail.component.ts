@@ -3,7 +3,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {UserService} from '../../services/user.service';
 import {Activity} from '../../models/activity.model';
-
+import { environment } from "../../../environments/environment";
 
 @Component({
   selector: 'app-activity-detail',
@@ -11,9 +11,11 @@ import {Activity} from '../../models/activity.model';
   styleUrls: ['./activity-detail.component.css']
 })
 export class ActivityDetailComponent implements OnInit {
-
-
+  actID: string;
+  year: string
+  id :string;
   activity: Activity;
+  joinLink: string;
   constructor(
     public userService: UserService,
     public activeRoute: ActivatedRoute,
@@ -23,8 +25,16 @@ export class ActivityDetailComponent implements OnInit {
 
   ngOnInit() {
     this.activeRoute.params.subscribe(routeParams => {
-      this.activity = this.userService.activityList.find(a => routeParams.id === a.actName);
+      // console.log(routeParams.id.substr(0,2), routeParams.id.slice(2));
+      this.year = routeParams.id.substr(0,2);
+      this.id = routeParams.id.slice(2);
     });
+    this.activity = this.userService.activityList.find(a => a.actYear.toString() === this.year && a.actID.toString() === this.id);
+    this.actID = this.year+this.id;
+    this.joinLink = `${environment.webUrl}/join/${this.actID}`;
+    console.log(this.joinLink);
   }
+  getQrCode(){
 
+  }
 }
