@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl : "http://api.activity.test"
+  apiUrl : "http://api.activity.test",
+  webUrl : "www.activity.net"
 };
 
 /*
